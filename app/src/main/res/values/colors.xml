@@ -7,11 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="lightGreen">#87F993</color>
+    <color name="red">#FF1F36</color>
+    <color name="darkGreen">#104840</color>
+    <color name="buttonGrey">#8C9A98</color>
     <color name = "orange">#ff9a2f</color>
     <color name = "orange1">#FFA200</color>
     <color name = "orange2">#FFAC1A</color>
     <color name = "orange3">#FFB83A</color>
-    <color name = "orange4">#FFCB6E</color>
+    <color name = "orange4">#FEBF4E</color>
 
     <color name = "blue">#2F94FF</color>
 </resources>

@@ -7,6 +7,14 @@
         <item name="android:textSize">38sp</item>
     </style>
 
+    <style name="buttonCustomStyle" parent="Widget.AppCompat.Button" >
+        <item name="backgroundColor">@color/buttonGrey</item>
+    </style>
+
+    <style name="imageViewCustom" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_margin">200dp</item>
+    </style>
+
     <style name="ViewPagerSmallHeading">
         <item name="android:textColor">@color/white</item>
         <item name="android:textAllCaps">true</item>
@@ -16,9 +24,14 @@
 
     <style name="ListItemText">
         <item name="android:textColor">@color/white</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:fontFamily">@font/roboto_slab</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="ListItemTextSelected" parent="ListItemText">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="Subtitle">

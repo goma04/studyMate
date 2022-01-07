@@ -1,4 +1,4 @@
-package goma.tanulotars.adapter.transform
+package goma.tanulotars.adapter.viewPager.transform
 
 import android.view.View
 import androidx.viewpager.widget.ViewPager

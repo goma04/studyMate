@@ -3,7 +3,7 @@ package goma.tanulotars
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import goma.tanulotars.adapter.BasicInfoPagerAdapter
-import goma.tanulotars.adapter.transform.DepthPageTransformer
+import goma.tanulotars.adapter.viewPager.transform.DepthPageTransformer
 import goma.tanulotars.databinding.ActivityBasicInfoSlideBinding
 
 class BasicInfoSlideActivity : AppCompatActivity() {
