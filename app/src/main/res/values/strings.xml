@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">tanulotars</string>
+    <string name="lorem_ipsum">teszt</string>
+    <string name="intro1">Tanulótárs</string>
+    <string name="intro2">Néhány lépés után már\n keresheted is a neked\n megfelelő társakat!</string>
+
+    <string name="tvName">Név</string>
+    <string name="intro4">Írj néhány szót magadról</string>
+    <string name="intro3">tárgyválasztó</string>
+    <string name="btMiddle">Közép</string>
+    <string name="btAdvanced">Emelt</string>
+</resources>

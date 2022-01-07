@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ViewPagerHeading">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/roboto_slab</item>
+        <item name="android:textSize">38sp</item>
+    </style>
+
+    <style name="ViewPagerSmallHeading">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/roboto_slab</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="ListItemText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/roboto_slab</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="Subtitle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+    </style>
+</resources>
