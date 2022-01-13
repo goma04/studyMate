@@ -28,8 +28,6 @@ class SubjectAdapter(
         init {
             itemView.setOnClickListener {
                 subject?.let { subject ->
-
-
                     if (!selected!!) {
                         subjectClickListener.onSubjectAdded(subject)
                         makeHolderAppearance(
@@ -46,8 +44,6 @@ class SubjectAdapter(
                             R.drawable.custom_subject_list_background
                         )
                     }
-
-
                     selected = !selected!!
                 }
             }

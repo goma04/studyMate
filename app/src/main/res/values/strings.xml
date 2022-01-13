@@ -10,4 +10,5 @@
     <string name="btMiddle">Közép</string>
     <string name="btAdvanced">Emelt</string>
     <string name="profilPicture">Profilkép</string>
+    <string name="saveButton">Mentés</string>
 </resources>

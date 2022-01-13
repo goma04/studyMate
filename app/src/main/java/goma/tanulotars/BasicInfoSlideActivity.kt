@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import goma.tanulotars.adapter.BasicInfoPagerAdapter
 import goma.tanulotars.adapter.viewPager.transform.DepthPageTransformer
 import goma.tanulotars.databinding.ActivityBasicInfoSlideBinding
+import goma.tanulotars.model.Student
 
 class BasicInfoSlideActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBasicInfoSlideBinding
@@ -14,9 +15,14 @@ class BasicInfoSlideActivity : AppCompatActivity() {
         binding = ActivityBasicInfoSlideBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.viewPager.adapter = BasicInfoPagerAdapter(supportFragmentManager)
+        val student = Student()
+
+        binding.viewPager.adapter = BasicInfoPagerAdapter(supportFragmentManager, student)
         binding.viewPager.setPageTransformer(true, DepthPageTransformer())
 
 
+
     }
+
+
 }

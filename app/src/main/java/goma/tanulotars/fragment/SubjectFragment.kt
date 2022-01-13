@@ -11,13 +11,14 @@ import goma.tanulotars.R
 import goma.tanulotars.adapter.recyclerView.SubjectAdapter
 import goma.tanulotars.databinding.FragmentSubjectBinding
 import goma.tanulotars.model.Level
+import goma.tanulotars.model.Student
 import goma.tanulotars.model.Subject
 
-class SubjectFragment : Fragment(), SubjectAdapter.SubjectClickListener {
+class SubjectFragment(val student: Student) : Fragment(), SubjectAdapter.SubjectClickListener {
     private lateinit var binding: FragmentSubjectBinding
-    private val selectedSubjects = mutableListOf<Subject>()
-    private val intermediateAdapter = SubjectAdapter(this, selectedSubjects)
-    private val advancedAdapter = SubjectAdapter(this, selectedSubjects)
+
+    private val intermediateAdapter = SubjectAdapter(this, student.subjects)
+    private val advancedAdapter = SubjectAdapter(this, student.subjects)
     private var intermediate = true
     private val subjects = listOf(
         Subject(1, "Magyar", Level.INTERMEDIATE),
@@ -45,11 +46,22 @@ class SubjectFragment : Fragment(), SubjectAdapter.SubjectClickListener {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSubjectBinding.inflate(layoutInflater, container, false)
+
+        initRecyclerView()
+        initButtons()
+
+        loadItems()
+        return binding.root
+    }
+
+    private fun initRecyclerView() {
         binding.rvIntermediate.adapter = intermediateAdapter
         binding.rvIntermediate.layoutManager = LinearLayoutManager(view?.context)
         binding.rvAdvanced.adapter = advancedAdapter
         binding.rvAdvanced.layoutManager = LinearLayoutManager(view?.context)
+    }
 
+    private fun initButtons() {
         binding.btAdvanced.setOnClickListener {
             binding.rvAdvanced.visibility = View.VISIBLE
             binding.rvIntermediate.visibility = View.INVISIBLE
@@ -63,11 +75,6 @@ class SubjectFragment : Fragment(), SubjectAdapter.SubjectClickListener {
             setActiveButton(binding.btIntermediate, binding.btAdvanced)
 
         }
-
-
-        loadItems()
-
-        return binding.root
     }
 
     private fun setActiveButton(btnActive: Button, btnNotActive: Button) {
@@ -77,17 +84,20 @@ class SubjectFragment : Fragment(), SubjectAdapter.SubjectClickListener {
     }
 
 
+
+
     private fun loadItems() {
         intermediateAdapter.update(subjects.filter { it.level == Level.INTERMEDIATE })
         advancedAdapter.update(subjects.filter { it.level == Level.ADVANCED })
     }
 
-    override fun onSubjectAdded(subject: Subject) {
-        selectedSubjects.add(subject)
 
+
+    override fun onSubjectAdded(subject: Subject) {
+        student.subjects.add(subject)
     }
 
     override fun onSubjectRemoved(subject: Subject) {
-        selectedSubjects.remove(subject)
+        student.subjects.remove(subject)
     }
 }

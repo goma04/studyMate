@@ -1,15 +1,18 @@
 package goma.tanulotars.fragment
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import goma.tanulotars.R
 import goma.tanulotars.databinding.FragmentProfilePictureBinding
+import goma.tanulotars.model.Student
 
 
-class ProfilePictureFragment: Fragment() {
+class ProfilePictureFragment(val student: Student): Fragment() {
     private lateinit var binding: FragmentProfilePictureBinding;
 
     override fun onCreateView(
@@ -30,7 +33,14 @@ class ProfilePictureFragment: Fragment() {
         binding.imageButton4.setOnClickListener{
             changeProfilePicture(binding.imageButton4.tag as String)
         }
+
         return binding.root
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    override fun onResume() {
+        super.onResume()
+        student.profilePicture = resources.getDrawable(R.drawable.avatar1, context!!.theme)
     }
 
     private fun getImageId(context: Context, imageName: String): Int {
@@ -39,11 +49,11 @@ class ProfilePictureFragment: Fragment() {
     }
 
     private fun changeProfilePicture(imageRes: String) {
-
-
-
         val res = getImageId(view!!.context, imageRes)
         binding.ivProfilePicture.setBackgroundResource(res)
-      //  binding.ivProfilePicture.setBackgroundResource(R.drawable.profilepicture1)
+
+
+
+        student.profilePicture = resources.getDrawable(res, context!!.theme)
     }
 }

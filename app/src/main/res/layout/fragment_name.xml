@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvName"
         style="@style/ViewPagerHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,6 +28,7 @@
     <EditText
         android:id="@+id/editTextTextPersonName"
         android:layout_width="wrap_content"
+        android:text="Marci"
         android:layout_height="wrap_content"
         android:ems="14"
         android:inputType="textPersonName"
