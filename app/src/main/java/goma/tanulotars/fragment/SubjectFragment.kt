@@ -11,14 +11,14 @@ import goma.tanulotars.R
 import goma.tanulotars.adapter.recyclerView.SubjectAdapter
 import goma.tanulotars.databinding.FragmentSubjectBinding
 import goma.tanulotars.model.Level
-import goma.tanulotars.model.Student
+import goma.tanulotars.model.User
 import goma.tanulotars.model.Subject
 
-class SubjectFragment(val student: Student) : Fragment(), SubjectAdapter.SubjectClickListener {
+class SubjectFragment(val user: User) : Fragment(), SubjectAdapter.SubjectClickListener {
     private lateinit var binding: FragmentSubjectBinding
 
-    private val intermediateAdapter = SubjectAdapter(this, student.subjects)
-    private val advancedAdapter = SubjectAdapter(this, student.subjects)
+    private val intermediateAdapter = SubjectAdapter(this, user.subjects)
+    private val advancedAdapter = SubjectAdapter(this, user.subjects)
     private var intermediate = true
     private val subjects = listOf(
         Subject(1, "Magyar", Level.INTERMEDIATE),
@@ -94,10 +94,10 @@ class SubjectFragment(val student: Student) : Fragment(), SubjectAdapter.Subject
 
 
     override fun onSubjectAdded(subject: Subject) {
-        student.subjects.add(subject)
+        user.subjects.add(subject)
     }
 
     override fun onSubjectRemoved(subject: Subject) {
-        student.subjects.remove(subject)
+        user.subjects.remove(subject)
     }
 }

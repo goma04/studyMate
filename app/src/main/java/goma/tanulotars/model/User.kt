@@ -2,8 +2,8 @@ package goma.tanulotars.model
 
 import android.graphics.drawable.Drawable
 
-class Student(
-    var name: String = "init",
+class User(
+    var name: String = "",
     var introduction: String = "",
     val subjects: MutableList<Subject> = mutableListOf<Subject>(),
     val friends: MutableList<Relationship> = mutableListOf<Relationship>(),

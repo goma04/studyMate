@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import goma.tanulotars.databinding.FragmentNameBinding
-import goma.tanulotars.model.Student
+import goma.tanulotars.model.User
 
-class NameFragment(val student: Student) : Fragment() {
+class NameFragment(val user: User) : Fragment() {
     private lateinit var binding: FragmentNameBinding;
 
     override fun onCreateView(
@@ -23,7 +23,7 @@ class NameFragment(val student: Student) : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        student.name = binding.editTextTextPersonName.text.toString()
+        user.name = binding.editTextTextPersonName.text.toString()
     }
 
 

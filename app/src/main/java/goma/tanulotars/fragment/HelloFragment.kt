@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import goma.tanulotars.databinding.FragmentHelloBinding
-import goma.tanulotars.model.Student
 
 
 class HelloFragment() : Fragment() {

@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import goma.tanulotars.databinding.FragmentIntroductionBinding
-import goma.tanulotars.model.Student
+import goma.tanulotars.model.User
 
-class IntroductionFragment(val student: Student) : Fragment() {
+class IntroductionFragment(val user: User) : Fragment() {
     private lateinit var binding: FragmentIntroductionBinding;
 
     override fun onCreateView(
@@ -18,7 +18,7 @@ class IntroductionFragment(val student: Student) : Fragment() {
     ): View {
         binding = FragmentIntroductionBinding.inflate(layoutInflater, container, false)
         binding.btSave.setOnClickListener {
-            student.introduction = binding.etIntro.text.toString()
+            user.introduction = binding.etIntro.text.toString()
         }
         return binding.root
     }

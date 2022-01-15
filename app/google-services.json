@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "609314956709",
+    "project_id": "tanulotars-e98f2",
+    "storage_bucket": "tanulotars-e98f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609314956709:android:7fb4b31396bde17e48b44c",
+        "android_client_info": {
+          "package_name": "goma.tanulotars"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609314956709-1kq7g7r141li3if843o8s41lotllethr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwEcQvz0nnySTuftF0DqTG1iGArHCP024"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609314956709-1kq7g7r141li3if843o8s41lotllethr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

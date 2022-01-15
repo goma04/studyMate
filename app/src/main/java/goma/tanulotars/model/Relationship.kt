@@ -1,7 +1,7 @@
 package goma.tanulotars.model
 
 class Relationship(
-    var students: Array<Student>
+    var users: Array<User>
 ): Entity() {
 
 }
