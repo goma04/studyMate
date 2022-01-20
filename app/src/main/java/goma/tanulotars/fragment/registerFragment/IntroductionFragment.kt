@@ -1,4 +1,4 @@
-package goma.tanulotars.fragment
+package goma.tanulotars.fragment.registerFragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import goma.tanulotars.databinding.FragmentIntroductionBinding
-import goma.tanulotars.model.User
+import goma.tanulotars.model.CurrentUser
 
-class IntroductionFragment(val user: User) : Fragment() {
+class IntroductionFragment() : Fragment() {
     private lateinit var binding: FragmentIntroductionBinding;
 
     override fun onCreateView(
@@ -18,7 +18,7 @@ class IntroductionFragment(val user: User) : Fragment() {
     ): View {
         binding = FragmentIntroductionBinding.inflate(layoutInflater, container, false)
         binding.btSave.setOnClickListener {
-            user.introduction = binding.etIntro.text.toString()
+            CurrentUser.user.introduction = binding.etIntro.text.toString()
         }
         return binding.root
     }

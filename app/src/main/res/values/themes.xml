@@ -21,7 +21,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.Tanulotars.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Tanulotars.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"  />
 
     <style name="Theme.Tanulotars.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

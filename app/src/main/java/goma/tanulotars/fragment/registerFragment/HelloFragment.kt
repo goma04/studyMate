@@ -1,4 +1,4 @@
-package goma.tanulotars.fragment
+package goma.tanulotars.fragment.registerFragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

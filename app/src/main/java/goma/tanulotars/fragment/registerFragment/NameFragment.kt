@@ -1,4 +1,4 @@
-package goma.tanulotars.fragment
+package goma.tanulotars.fragment.registerFragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import goma.tanulotars.databinding.FragmentNameBinding
-import goma.tanulotars.model.User
+import goma.tanulotars.model.CurrentUser
 
-class NameFragment(val user: User) : Fragment() {
+class NameFragment() : Fragment() {
     private lateinit var binding: FragmentNameBinding;
 
     override fun onCreateView(
@@ -23,7 +23,7 @@ class NameFragment(val user: User) : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        user.name = binding.editTextTextPersonName.text.toString()
+        CurrentUser.user.name =  binding.editTextTextPersonName.text.toString()
     }
 
 

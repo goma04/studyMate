@@ -3,11 +3,9 @@ package goma.tanulotars.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import goma.tanulotars.fragment.registerFragment.*
 
-import goma.tanulotars.fragment.*
-import goma.tanulotars.model.User
-
-class BasicInfoPagerAdapter(manager: FragmentManager, val user: User) :
+class BasicInfoPagerAdapter(manager: FragmentManager) :
     FragmentStatePagerAdapter(manager) {
     companion object {
         private const val NUM_PAGES = 6
@@ -18,11 +16,11 @@ class BasicInfoPagerAdapter(manager: FragmentManager, val user: User) :
     override fun getItem(position: Int): Fragment {
         return when (position) {
             0 -> HelloFragment()
-            1 -> NameFragment(user)
-            2 -> ProfilePictureFragment(user)
-            3 -> SubjectFragment(user)
-            4 -> IntroductionFragment(user)
-            5 -> SummaryFragment(user)
+            1 -> NameFragment()
+            2 -> ProfilePictureFragment()
+            3 -> SubjectFragment()
+            4 -> IntroductionFragment()
+            5 -> SummaryFragment()
             else -> throw IllegalArgumentException("No such page!")
         }
     }

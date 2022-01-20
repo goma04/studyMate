@@ -18,7 +18,7 @@
             android:layout_height="72dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/logo" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -31,8 +31,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
+
                 android:inputType="textEmailAddress"
-                android:text="" />
+                android:text="gomarci04@gmail.com" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:text="" />
+                android:text="BIzsu1234" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

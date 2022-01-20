@@ -1,4 +1,4 @@
-package goma.tanulotars.fragment
+package goma.tanulotars.fragment.registerFragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,15 +10,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import goma.tanulotars.R
 import goma.tanulotars.adapter.recyclerView.SubjectAdapter
 import goma.tanulotars.databinding.FragmentSubjectBinding
+import goma.tanulotars.model.CurrentUser
 import goma.tanulotars.model.Level
-import goma.tanulotars.model.User
 import goma.tanulotars.model.Subject
 
-class SubjectFragment(val user: User) : Fragment(), SubjectAdapter.SubjectClickListener {
+class SubjectFragment() : Fragment(), SubjectAdapter.SubjectClickListener {
     private lateinit var binding: FragmentSubjectBinding
 
-    private val intermediateAdapter = SubjectAdapter(this, user.subjects)
-    private val advancedAdapter = SubjectAdapter(this, user.subjects)
+    private val intermediateAdapter = SubjectAdapter(this, CurrentUser.user.subjects)
+    private val advancedAdapter = SubjectAdapter(this, CurrentUser.user.subjects)
     private var intermediate = true
     private val subjects = listOf(
         Subject(1, "Magyar", Level.INTERMEDIATE),
@@ -94,10 +94,10 @@ class SubjectFragment(val user: User) : Fragment(), SubjectAdapter.SubjectClickL
 
 
     override fun onSubjectAdded(subject: Subject) {
-        user.subjects.add(subject)
+        CurrentUser.user.subjects.add(subject)
     }
 
     override fun onSubjectRemoved(subject: Subject) {
-        user.subjects.remove(subject)
+        CurrentUser.user.subjects.remove(subject)
     }
 }
