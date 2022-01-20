@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/drawable-mdpi/border.xml" value="0.22320675105485233" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/drawable/buttonstyleithgradient.xml" value="0.23796296296296296" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/drawable/custom_subject_list_background.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/drawable/custom_subject_list_background_selected.xml" value="0.17135416666666667" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/font/roboto_slab.xml" value="0.19947916666666668" />
@@ -16,6 +17,9 @@
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_hello.xml" value="0.16927083333333334" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_introduction.xml" value="0.16927083333333334" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_name.xml" value="0.264" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_posts.xml" value="0.18614130434782608" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_profile_copy.xml" value="0.24939320388349515" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_profile_picture.xml" value="0.152" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_screen_slide_page.xml" value="0.259375" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_subject.xml" value="0.16927083333333334" />
