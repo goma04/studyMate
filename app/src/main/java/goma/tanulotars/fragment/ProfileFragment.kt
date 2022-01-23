@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.google.gson.Gson
 import goma.tanulotars.databinding.FragmentProfileBinding
 import goma.tanulotars.model.CurrentUser
+import goma.tanulotars.model.Relationship
 import goma.tanulotars.model.User
 
 class ProfileFragment() : Fragment() {
@@ -32,6 +33,9 @@ class ProfileFragment() : Fragment() {
         binding.tvDesc.text = user.introduction
         binding.tvMatesNumberProfileFragment.text = user.friends.size.toString()
         binding.tvSubjectCountProfileFragment.text = user.subjects.size.toString()
+        binding.btnSendMessage.setOnClickListener {
+            CurrentUser.user.friends += Relationship(arrayOf(CurrentUser.user, user))
+        }
 
 
         var tvSubjectsText = ""
