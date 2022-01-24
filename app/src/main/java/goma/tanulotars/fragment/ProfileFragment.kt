@@ -7,16 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
 import goma.tanulotars.databinding.FragmentProfileBinding
+import goma.tanulotars.firebase.FirebaseUtility
 import goma.tanulotars.model.CurrentUser
-import goma.tanulotars.model.Relationship
 import goma.tanulotars.model.User
 
 class ProfileFragment() : Fragment() {
     private var user: User = User()
     private lateinit var binding: FragmentProfileBinding
-    private val currentUser = CurrentUser.user
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,23 +23,15 @@ class ProfileFragment() : Fragment() {
         val gson = Gson()
         val userJson = requireArguments().getString("userJson")
         user = gson.fromJson(userJson, user::class.java)
-
         binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
-        binding.tvNameProfileFragment.text = user.name
-        binding.ivProfilePictureProfileFragment.setImageBitmap(user.profilePicture)
-        binding.tvDesc.text = user.introduction
-        binding.tvMatesNumberProfileFragment.text = user.friends.size.toString()
-        binding.tvSubjectCountProfileFragment.text = user.subjects.size.toString()
-        binding.btnSendMessage.setOnClickListener {
-            CurrentUser.user.friends += Relationship(arrayOf(CurrentUser.user, user))
-        }
+        setBindings()
 
 
         var tvSubjectsText = ""
-        for(subject in user.subjects){
-            tvSubjectsText+=subject.name
+        for (subject in user.subjects) {
+            tvSubjectsText += subject.name
 
-            if(user.subjects.last() != subject)
+            if (user.subjects.last() != subject)
                 tvSubjectsText += ", "
         }
 
@@ -50,5 +39,23 @@ class ProfileFragment() : Fragment() {
         binding.tvSubjectsProfileFragment.text = tvSubjectsText
 
         return binding.root
+    }
+
+    private fun setBindings() {
+
+        binding.tvNameProfileFragment.text = user.name
+        binding.ivProfilePictureProfileFragment.setImageBitmap(user.profilePicture)
+        binding.tvDesc.text = user.introduction
+        binding.tvMatesNumberProfileFragment.text = user.friends.size.toString()
+        binding.tvSubjectCountProfileFragment.text = user.subjects.size.toString()
+        binding.btnSendMessage.setOnClickListener {
+            CurrentUser.user.friends += user.id
+            FirebaseUtility.updateOrCreateUser(CurrentUser.user)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setBindings()
     }
 }

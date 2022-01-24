@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var binding: ActivityMainBinding
     private val postsFragment = PostsFragment()
     private val messagesFragment = MessagesFragment()
-    private lateinit var  profileFragment: ProfileFragment
+    private var profileFragment: ProfileFragment = initProfile(CurrentUser.user)
     private var currentFragment: Fragment = postsFragment
     private lateinit var user: User
 
@@ -76,8 +76,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding.appBarMain.ivLogo.visibility = View.VISIBLE
     }
 
+    fun initProfile(user: User): ProfileFragment{
+        profileFragment = ProfileFragment()
+
+        val gson = Gson()
+        val userJson = gson.toJson(CurrentUser.user)
+        val bundle = Bundle()
+        bundle.putString("userJson", userJson)
+
+        profileFragment.arguments = bundle
+        return profileFragment
+    }
+
     //A bejelentkezett user adatai később erkeznek meg, mint az activity indulása, ezért a loginactivity elsüt egy eseményt amikor kész
     override fun onUserLoaded(user: User) {
+        CurrentUser.user = user
         profileFragment = ProfileFragment()
 
         val gson = Gson()
