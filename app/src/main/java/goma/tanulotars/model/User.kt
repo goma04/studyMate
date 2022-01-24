@@ -8,7 +8,7 @@ class User(
     var name: String = "",
     var introduction: String = "",
     val subjects: MutableList<Subject> = mutableListOf<Subject>(),
-    val friends: MutableList<String> = mutableListOf<String>(),
+    val friends: MutableList<User> = mutableListOf<User>(),
     var profilePicture: Bitmap? = null,
     var profilePictureId: String = "avatar1",
     var token :String="",

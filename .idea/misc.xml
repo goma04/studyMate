@@ -14,6 +14,9 @@
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/activity_main.xml" value="0.1983695652173913" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/activity_slideScreen.xml" value="0.4" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/activity_slide_screen.xml" value="0.16927083333333334" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/card_post.xml" value="0.12613981762917933" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/firend_list_item.xml" value="0.23731884057971014" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_friends.xml" value="0.23731884057971014" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_hello.xml" value="0.16927083333333334" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_introduction.xml" value="0.16927083333333334" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_name.xml" value="0.264" />
@@ -24,6 +27,7 @@
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_screen_slide_page.xml" value="0.259375" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_subject.xml" value="0.16927083333333334" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_summary.xml" value="0.12" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/friend_list_item.xml" value="0.23731884057971014" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/subject_list.xml" value="0.23369565217391305" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/subject_list_item.xml" value="0.13179347826086957" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/viewpager.xml" value="0.16927083333333334" />

@@ -80,10 +80,10 @@ class PostsFragment : Fragment(), PostsAdapter.PostClickListener {
                     val user = document.toObject<User>()!!
 
                     val res = ImageIdGetter.getImageId(requireContext(), user.profilePictureId)
-                    user.profilePicture  = BitmapFactory.decodeResource(resources, res)
+                    user.profilePicture = BitmapFactory.decodeResource(resources, res)
 
                     val gson = Gson()
-                    val intent = Intent(context,ProfileActivity()::class.java)
+                    val intent = Intent(context, ProfileActivity()::class.java)
 
                     intent.putExtra("userJson", gson.toJson(user))
                     startActivity(intent)

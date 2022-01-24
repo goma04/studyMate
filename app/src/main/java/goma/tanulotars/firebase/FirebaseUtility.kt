@@ -18,6 +18,19 @@ object FirebaseUtility {
     fun updateOrCreateUser(user: User) {
         val db = Firebase.firestore
 
+        val friendListToSave = mutableListOf<HashMap<String, Any>>()
+
+        for(friend in user.friends){
+            friendListToSave += hashMapOf(
+                "name" to friend.name,
+                "introduction" to friend.introduction,
+                "subjects" to friend.subjects,
+                "profilePictureId" to friend.profilePictureId,
+                "id" to friend.id,
+            )
+        }
+
+
 
         val newUser = hashMapOf(
             "name" to user.name,
@@ -25,7 +38,7 @@ object FirebaseUtility {
             "subjects" to user.subjects,
             "profilePictureId" to user.profilePictureId,
             "id" to user.id,
-            "friends" to user.friends
+            "friends" to friendListToSave
         )
 
         db.collection("users")

@@ -11,6 +11,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.gson.Gson
 import goma.tanulotars.R
 import goma.tanulotars.databinding.ActivityMainBinding
+import goma.tanulotars.fragment.FriendsFragment
 import goma.tanulotars.fragment.MessagesFragment
 import goma.tanulotars.fragment.PostsFragment
 import goma.tanulotars.fragment.ProfileFragment
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var binding: ActivityMainBinding
     private val postsFragment = PostsFragment()
     private val messagesFragment = MessagesFragment()
+    private val friendsFragment = FriendsFragment()
     private var profileFragment: ProfileFragment = initProfile(CurrentUser.user)
     private var currentFragment: Fragment = postsFragment
     private lateinit var user: User
@@ -37,7 +39,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        changeFragment(PostsFragment())
+        changeFragment(postsFragment)
         binding.navView.setNavigationItemSelectedListener(this)
     }
 
@@ -49,10 +51,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 changeFragment(postsFragment)
             }
             R.id.nav_messages -> {
-                changeFragment(messagesFragment)
+                changeFragment(friendsFragment)
             }
             R.id.nav_profile -> {
                 binding.appBarMain.ivLogo.visibility = View.INVISIBLE
+
+                val gson = Gson()
+                val userJson = gson.toJson(CurrentUser.user)
+                val bundle = Bundle()
+                bundle.putString("userJson", userJson)
+
+                profileFragment.arguments = bundle
 
                 changeFragment(profileFragment)
             }

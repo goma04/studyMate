@@ -27,6 +27,7 @@ class ProfileFragment() : Fragment() {
         setBindings()
 
 
+
         var tvSubjectsText = ""
         for (subject in user.subjects) {
             tvSubjectsText += subject.name
@@ -48,10 +49,17 @@ class ProfileFragment() : Fragment() {
         binding.tvDesc.text = user.introduction
         binding.tvMatesNumberProfileFragment.text = user.friends.size.toString()
         binding.tvSubjectCountProfileFragment.text = user.subjects.size.toString()
-        binding.btnSendMessage.setOnClickListener {
-            CurrentUser.user.friends += user.id
-            FirebaseUtility.updateOrCreateUser(CurrentUser.user)
+
+        if(user.id != CurrentUser.user.id){
+            binding.btnSendMessage.setOnClickListener {
+                user
+                CurrentUser.user.friends += user
+                FirebaseUtility.updateOrCreateUser(CurrentUser.user)
+            }
+        }else{
+            binding.btnSendMessage.visibility = View.GONE
         }
+
     }
 
     override fun onResume() {
