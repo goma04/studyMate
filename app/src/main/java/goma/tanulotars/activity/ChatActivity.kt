@@ -1,43 +1,43 @@
-package goma.tanulotars.fragment
+package goma.tanulotars.activity
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ProgressBar
-import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
+import goma.tanulotars.ImageIdGetter
 import goma.tanulotars.MyButtonObserver
 import goma.tanulotars.MyScrollToBottomObserver
 import goma.tanulotars.adapter.recyclerView.MessageAdapter
-import goma.tanulotars.databinding.FragmentMessagesBinding
+import goma.tanulotars.databinding.ActivityChatBinding
 import goma.tanulotars.model.CurrentUser
 import goma.tanulotars.model.Message
+import goma.tanulotars.model.User
 
-class MessagesFragment : Fragment() {
-    private lateinit var binding: FragmentMessagesBinding
+class ChatActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityChatBinding
     private lateinit var manager: LinearLayoutManager
     private lateinit var db: FirebaseDatabase
     private lateinit var adapter: MessageAdapter
+    private var friend: User = User()
 
+    @SuppressLint("UseCompatLoadingForDrawables")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityChatBinding.inflate(layoutInflater)
 
-    companion object {
-        private const val TAG = "MainActivity"
-        const val MESSAGES_CHILD = "messages"
-        const val ANONYMOUS = "anonymous"
-        private const val LOADING_IMAGE_URL = "https://www.google.com/images/spin-32.gif"
-    }
+        val gson = Gson()
+        val userJson = intent.extras!!.getString("userJson")
+        friend = gson.fromJson(userJson, friend::class.java)
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentMessagesBinding.inflate(layoutInflater, container, false)
+        binding.tvFriendChatName.text = friend.name
+
+        val res = ImageIdGetter.getImageId(this, friend.profilePictureId)
+        binding.ivProfilePictureChat.setImageDrawable(this.resources.getDrawable(res, this.theme))
 
         // Initialize Realtime Database
         db = Firebase.database
@@ -49,8 +49,8 @@ class MessagesFragment : Fragment() {
             .setQuery(messagesRef, goma.tanulotars.model.Message::class.java)
             .build()
         adapter = MessageAdapter(options)
-        binding.progressBar.visibility = ProgressBar.INVISIBLE
-        manager = LinearLayoutManager(view?.context)
+
+        manager = LinearLayoutManager(this)
         manager.stackFromEnd = true
         binding.messageRecyclerView.layoutManager = manager
         binding.messageRecyclerView.adapter = adapter
@@ -78,23 +78,17 @@ class MessagesFragment : Fragment() {
         }
 
 
-
-        return binding.root
+        setContentView(binding.root)
     }
 
 
 
 
 
-    public override fun onPause() {
-        adapter.stopListening()
-        super.onPause()
+    companion object {
+        private const val TAG = "MainActivity"
+        const val MESSAGES_CHILD = "messages"
+        const val ANONYMOUS = "anonymous"
+        private const val LOADING_IMAGE_URL = "https://www.google.com/images/spin-32.gif"
     }
-
-    public override fun onResume() {
-        super.onResume()
-        adapter.startListening()
-    }
-
-
 }

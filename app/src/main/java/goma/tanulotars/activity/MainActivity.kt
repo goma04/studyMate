@@ -12,7 +12,6 @@ import com.google.gson.Gson
 import goma.tanulotars.R
 import goma.tanulotars.databinding.ActivityMainBinding
 import goma.tanulotars.fragment.FriendsFragment
-import goma.tanulotars.fragment.MessagesFragment
 import goma.tanulotars.fragment.PostsFragment
 import goma.tanulotars.fragment.ProfileFragment
 import goma.tanulotars.interfaces.OnUserLoaded
@@ -26,7 +25,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private val postsFragment = PostsFragment()
-    private val messagesFragment = MessagesFragment()
     private val friendsFragment = FriendsFragment()
     private var profileFragment: ProfileFragment = initProfile(CurrentUser.user)
     private var currentFragment: Fragment = postsFragment

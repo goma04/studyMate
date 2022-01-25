@@ -43,6 +43,7 @@ class FriendAdapter(
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onBindViewHolder(holder: FriendAdapter.FriendViewHolder, position: Int) {
         val friend = friendList[position]
+        holder.friend = friend
 
         var tvSubjectsText = ""
         for (subject in friend.subjects) {
@@ -59,12 +60,7 @@ class FriendAdapter(
 
     }
 
-    fun addFriend(friend: User?) {
-        friend ?: return
 
-        friendList += (friend)
-        notifyDataSetChanged()
-    }
 
     override fun getItemCount(): Int {
         return friendList.size
