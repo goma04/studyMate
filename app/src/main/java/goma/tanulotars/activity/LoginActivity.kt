@@ -120,7 +120,7 @@ class LoginActivity : AppCompatActivity() {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "createUserWithEmail:success")
                         val user = auth.currentUser
-                        openInfoActivity()
+                        startActivity(Intent(this, RegisterActivity::class.java))
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "createUserWithEmail:failure", task.exception)
@@ -139,9 +139,7 @@ class LoginActivity : AppCompatActivity() {
             .getIdentifier("drawable/$imageName", null, context.packageName)
     }
 
-    private fun openInfoActivity() {
-        startActivity(Intent(this, BasicInfoSlideActivity::class.java))
-    }
+
 
     public override fun onStart() {
         super.onStart()
