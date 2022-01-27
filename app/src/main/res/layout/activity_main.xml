@@ -14,12 +14,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include
-            android:id="@+id/app_bar_main"
-            layout="@layout/app_bar_main"
-            android:layout_width="match_parent"
-            android:layout_height="70dp" />
-
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView"
             android:layout_width="match_parent"

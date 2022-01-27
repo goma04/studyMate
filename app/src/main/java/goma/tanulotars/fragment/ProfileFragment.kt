@@ -24,9 +24,8 @@ class ProfileFragment() : Fragment() {
         val userJson = requireArguments().getString("userJson")
         user = gson.fromJson(userJson, user::class.java)
         binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
+
         setBindings()
-
-
 
         var tvSubjectsText = ""
         for (subject in user.subjects) {

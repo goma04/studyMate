@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -25,18 +26,19 @@
                 android:text="Adatok" />
 
             <TextView
+                android:id="@+id/tvExplain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_slab"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Ha valaki szeretne veled tanulni, akkor ezeken az elérhetőségeken tudja majd felvenni veled a kapcsolatot"
+                android:text="Ha valaki szeretne veled tanulni, akkor ezeken az elérhetőségeken tudja majd felvenni veled a kapcsolatot. A név, valamint az elérhetőségek közül legalább egy kitöltése kötelező"
                 android:textSize="22sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="24dp"
                 android:orientation="horizontal">
 
@@ -53,6 +55,7 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="10dp"
                     android:ems="14"
+                    android:text=""
                     android:hint="Név, amit a többiek látnak"
                     android:inputType="textPersonName" />
 
@@ -61,7 +64,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
@@ -86,7 +89,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp">
 
                 <ImageView
@@ -109,7 +112,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp">
 
                 <ImageView
@@ -125,23 +128,277 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="10dp"
                     android:ems="14"
-                    android:hint="Egyéb elérhetőség (email, stb)"
+                    android:hint="Egyéb elérhetőség (email, dc, stb.)"
                     android:inputType="textPersonName" />
 
             </LinearLayout>
 
+            <EditText
+                android:id="@+id/etIntro"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="20dp"
+                android:height="180dp"
+                android:background="@drawable/border"
+                android:ems="15"
+                android:gravity="start|top"
+                android:hint="Néhány szó magadról. Itt összegezd, hogy milyen típusú tanulótársat keresel (nem kötelező)"
+                android:inputType="textMultiLine"
+                android:paddingHorizontal="15dp"
+                android:paddingTop="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/roboto_slab"
+                android:gravity="center"
+                android:text="Tantárgyak"
+                android:textSize="22sp" />
+
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvIntermediate"
+                android:id="@+id/rvSubjects"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_margin="10dp"
+                android:background="@color/blue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/roboto_slab"
+                android:gravity="center"
+                android:text="Válassz profilképet"
+                android:textSize="22sp" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@color/blue" />
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/imageButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/avatar1"
+                    android:tag="avatar1"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:src="@drawable/avatar2"
+                    android:tag="avatar2"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <ImageButton
+                    android:id="@+id/imageButton3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:src="@drawable/avatar3"
+                    android:tag="avatar3"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <ImageButton
+                    android:id="@+id/imageButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:src="@drawable/avatar4"
+                    android:tag="avatar4"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <ImageButton
+                    android:id="@+id/imageButton5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:src="@drawable/avatar5"
+                    android:tag="avatar5"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <ImageButton
+                    android:id="@+id/imageButton6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:src="@drawable/avatar6"
+                    android:tag="avatar4"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <ImageButton
+                    android:id="@+id/imageButton7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:src="@drawable/avatar7"
+                    android:tag="avatar3"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <ImageButton
+                    android:id="@+id/imageButton8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:src="@drawable/avatar8"
+                    android:tag="avatar4"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <ImageButton
+                    android:id="@+id/imageButton9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:src="@drawable/avatar9"
+                    android:tag="avatar3"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <ImageButton
+                    android:id="@+id/imageButton10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:src="@drawable/avatar10"
+                    android:tag="avatar4"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <ImageButton
+                    android:id="@+id/imageButton11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:src="@drawable/avatar11"
+                    android:tag="avatar3"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <ImageButton
+                    android:id="@+id/imageButton12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:src="@drawable/avatar12"
+                    android:tag="avatar4"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <ImageButton
+                    android:id="@+id/imageButton13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:src="@drawable/avatar13"
+                    android:tag="avatar3"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <ImageButton
+                    android:id="@+id/imageButton14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:src="@drawable/avatar14"
+                    android:tag="avatar4"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+
+            </LinearLayout>
+
 
             <Button
                 android:id="@+id/btnStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/darkGreen"
+                android:layout_gravity="center"
+                android:layout_margin="28dp"
+                android:background="@color/blue"
                 android:text="@string/btn_start" />
         </LinearLayout>
     </ScrollView>

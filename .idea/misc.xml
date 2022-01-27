@@ -3,16 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/drawable/custom_subject_list_background.xml" value="0.2065" />
+        <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/drawable/custom_subject_list_background_selected.xml" value="0.2065" />
         <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/layout-v26/fragment_name.xml" value="0.2028985507246377" />
         <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/layout/activity_main.xml" value="0.2028985507246377" />
+        <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/layout/activity_profile.xml" value="0.23229166666666667" />
         <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/layout/activity_register.xml" value="0.2028985507246377" />
+        <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/layout/app_bar_main.xml" value="0.23229166666666667" />
         <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/layout/fragment_hello.xml" value="0.2028985507246377" />
         <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/layout/fragment_introduction.xml" value="0.2028985507246377" />
         <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/layout/fragment_name.xml" value="0.1" />
         <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/layout/fragment_posts.xml" value="0.2028985507246377" />
         <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/layout/fragment_profile.xml" value="0.2028985507246377" />
+        <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/layout/fragment_profile_picture.xml" value="0.21666666666666667" />
         <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/layout/fragment_subject.xml" value="0.2028985507246377" />
         <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/layout/fragment_summary.xml" value="0.2028985507246377" />
+        <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/layout/subject_list_item.xml" value="0.21666666666666667" />
         <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/menu/activity_main_menu.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/drawable-mdpi/border.xml" value="0.22320675105485233" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/drawable/buttonstyleithgradient.xml" value="0.23796296296296296" />

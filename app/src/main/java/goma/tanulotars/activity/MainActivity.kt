@@ -52,8 +52,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 changeFragment(friendsFragment)
             }
             R.id.nav_profile -> {
-                binding.appBarMain.ivLogo.visibility = View.INVISIBLE
-
                 val gson = Gson()
                 val userJson = gson.toJson(CurrentUser.user)
                 val bundle = Bundle()
@@ -80,7 +78,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onResume() {
         super.onResume()
 
-        binding.appBarMain.ivLogo.visibility = View.VISIBLE
+
     }
 
     fun initProfile(user: User): ProfileFragment{

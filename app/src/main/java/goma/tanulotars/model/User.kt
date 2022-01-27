@@ -12,6 +12,8 @@ class User(
     var profilePicture: Bitmap? = null,
     var profilePictureId: String = "avatar1",
     var token :String="",
+    var instagram :String="",
+    var facebook :String="",
     var email: String = ""
 
 ) : Entity(), Serializable {
