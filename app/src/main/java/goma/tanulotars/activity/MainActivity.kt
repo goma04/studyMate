@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_home -> {
                 changeFragment(postsFragment)
             }
-            R.id.nav_messages -> {
+            R.id.nav_friends -> {
                 changeFragment(friendsFragment)
             }
             R.id.nav_profile -> {
