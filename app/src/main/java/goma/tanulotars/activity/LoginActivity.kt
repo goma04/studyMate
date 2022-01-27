@@ -98,7 +98,7 @@ class LoginActivity : AppCompatActivity() {
                     //TODO remove CurrentUser.user.profilePicture = resources.getDrawable(res, this.theme)
                     CurrentUser.user.profilePicture = BitmapFactory.decodeResource(resources, res)
 
-                    onUserLoadedListener?.onUserLoaded(CurrentUser.user)
+
 
                 } else {
                     Log.d(TAG, "No such document")

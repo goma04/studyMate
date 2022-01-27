@@ -11,6 +11,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import goma.tanulotars.ImageIdGetter
 import goma.tanulotars.R
 import goma.tanulotars.adapter.recyclerView.SubjectAdapter
 import goma.tanulotars.databinding.ActivityRegisterBinding
@@ -24,7 +25,6 @@ class RegisterActivity : AppCompatActivity(), SubjectAdapter.SubjectClickListene
     private lateinit var binding: ActivityRegisterBinding
     private val subjectAdapter = SubjectAdapter(this, CurrentUser.user.subjects)
 
-    private var intermediate = true
     private var currentlySelectedProfilePicture: ImageView? = null
     private val subjects = listOf(
         Subject(1, "matematika", Level.INTERMEDIATE),
@@ -85,27 +85,35 @@ class RegisterActivity : AppCompatActivity(), SubjectAdapter.SubjectClickListene
             }
 
 
-            val currentFirebaseUser = Firebase.auth.currentUser
-            CurrentUser.user.id = currentFirebaseUser!!.uid
-            CurrentUser.user.email = currentFirebaseUser.email.toString()
-            CurrentUser.user.introduction = binding.etIntro.text.toString()
-            CurrentUser.user.facebook = binding.etFacebook.text.toString()
-            CurrentUser.user.instagram = binding.etIntro.text.toString()
-            CurrentUser.user.name = binding.editTextTextPersonName.text.toString()
+            setUserTextData()
+            setUserProfilePicture()
+
             FirebaseUtility.updateOrCreateUser(CurrentUser.user)
 
             startActivity(Intent(this, MainActivity::class.java))
-            thread {
-                //TODO ez rettentő csúnya így
-                Thread.sleep(200)
-              //  LoginActivity.onUserLoadedListener?.onUserLoaded(CurrentUser.user)
-            }
         }
 
         initButtons()
         initRecyclerView()
         loadItems()
         changeSelectedProfilePicture(binding.imageButton1)
+    }
+
+    private fun setUserTextData() {
+        val currentFirebaseUser = Firebase.auth.currentUser
+        CurrentUser.user.id = currentFirebaseUser!!.uid
+        CurrentUser.user.email = currentFirebaseUser.email.toString()
+        CurrentUser.user.introduction = binding.etIntro.text.toString()
+        CurrentUser.user.facebook = binding.etFacebook.text.toString()
+        CurrentUser.user.instagram = binding.etInstagram.text.toString()
+        CurrentUser.user.name = binding.editTextTextPersonName.text.toString()
+    }
+
+    private fun setUserProfilePicture() {
+        val photoId = currentlySelectedProfilePicture!!.tag.toString()
+        CurrentUser.user.profilePictureId = photoId
+        val res = ImageIdGetter.getImageId(this, photoId)
+        CurrentUser.user.profilePicture = BitmapFactory.decodeResource(resources, res)
     }
 
     private fun checkValidForm(): Boolean {

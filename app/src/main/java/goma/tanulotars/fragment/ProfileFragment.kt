@@ -48,6 +48,9 @@ class ProfileFragment() : Fragment() {
         binding.tvDesc.text = user.introduction
         binding.tvMatesNumberProfileFragment.text = user.friends.size.toString()
         binding.tvSubjectCountProfileFragment.text = user.subjects.size.toString()
+        binding.tvFacebookProfileFragment.text = user.facebook
+        binding.tvInstagramProfileFragment.text = user.instagram
+
 
         if(user.id != CurrentUser.user.id){
             binding.btnSendMessage.setOnClickListener {

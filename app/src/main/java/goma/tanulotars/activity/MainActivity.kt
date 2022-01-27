@@ -75,11 +75,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         currentFragment = newFragment
     }
 
-    override fun onResume() {
-        super.onResume()
 
-
-    }
 
     fun initProfile(user: User): ProfileFragment{
         profileFragment = ProfileFragment()
