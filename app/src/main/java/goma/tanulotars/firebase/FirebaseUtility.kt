@@ -27,6 +27,8 @@ object FirebaseUtility {
                 "subjects" to friend.subjects,
                 "profilePictureId" to friend.profilePictureId,
                 "id" to friend.id,
+                "facebook" to friend.facebook,
+                "instagram" to friend.instagram
             )
         }
 
@@ -38,6 +40,8 @@ object FirebaseUtility {
             "subjects" to user.subjects,
             "profilePictureId" to user.profilePictureId,
             "id" to user.id,
+            "facebook" to user.facebook,
+            "instagram" to user.instagram,
             "friends" to friendListToSave
         )
 
