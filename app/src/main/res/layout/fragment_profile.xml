@@ -30,8 +30,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-
-        android:layout_weight="15">
+android:layout_margin="5dp"
+        android:layout_weight="14">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,26 +95,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
-        android:orientation="horizontal"
-        android:padding="4dp">
+        android:layout_weight="9"
+        android:layout_marginTop="3dp"
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_gravity="center"
             android:layout_marginStart="20dp"
             android:src="@drawable/subjects" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/tvSubjectsProfileFragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -206,7 +204,7 @@
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_gravity="center"
+
             android:layout_marginStart="20dp"
             android:src="@drawable/description" />
 
@@ -218,7 +216,6 @@
                 android:id="@+id/tvDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
                 android:layout_marginStart="20dp"
                 android:textSize="16sp"
                 android:textStyle="bold" />

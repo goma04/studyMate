@@ -1,12 +1,15 @@
 package goma.tanulotars.activity
 
-import android.content.Intent
+import android.content.ContentValues
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import goma.tanulotars.ImageIdGetter
@@ -18,9 +21,10 @@ import goma.tanulotars.model.CurrentUser
 import goma.tanulotars.model.Level
 import goma.tanulotars.model.Subject
 
-class RegisterActivity : AppCompatActivity(), SubjectAdapter.SubjectClickListener {
+
+class RegisterActivity : AppCompatActivity(){
     private lateinit var binding: ActivityRegisterBinding
-    private val subjectAdapter = SubjectAdapter(this, CurrentUser.user.subjects)
+    private val subjectAdapter = SubjectAdapter(CurrentUser.user.subjects)
 
     private var currentlySelectedProfilePicture: ImageView? = null
     private val subjects = listOf(
@@ -81,19 +85,49 @@ class RegisterActivity : AppCompatActivity(), SubjectAdapter.SubjectClickListene
                 return@setOnClickListener
             }
 
+            val email = binding.etEmail.text.toString()
+            val password = binding.etPassword.text.toString()
 
-            setUserTextData()
-            setUserProfilePicture()
+            val auth = Firebase.auth
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(ContentValues.TAG, "createUserWithEmail:success")
+                        val user = auth.currentUser
+                        setUserTextData()
+                        setUserProfilePicture()
 
-            FirebaseUtility.updateOrCreateUser(CurrentUser.user)
+                        FirebaseUtility.updateOrCreateUser(CurrentUser.user)
 
-            startActivity(Intent(this, MainActivity::class.java))
+                        showDialog("Sikeres regisztráció!")
+                       // finish()
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(ContentValues.TAG, "createUserWithEmail:failure", task.exception)
+                        Toast.makeText(
+                            baseContext, "Authentication failed.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        showDialog("Sikertelen regisztráció")
+                    }
+                }
         }
 
         initButtons()
         initRecyclerView()
         loadItems()
         changeSelectedProfilePicture(binding.imageButton1)
+    }
+
+    private fun showDialog(message: String) {
+        MaterialAlertDialogBuilder(this)
+            .setMessage(message)
+            .setPositiveButton(resources.getString(R.string.accept)) { dialog, which ->
+                finish()
+            }
+            .setCancelable(false)
+            .show()
     }
 
     private fun setUserTextData() {
@@ -220,14 +254,6 @@ class RegisterActivity : AppCompatActivity(), SubjectAdapter.SubjectClickListene
         currentlySelectedProfilePicture?.setBackgroundResource(0)
         currentlySelectedProfilePicture = newSelected
         newSelected.setBackgroundResource(R.drawable.border)
-    }
-
-    override fun onSubjectAdded(subject: Subject) {
-        CurrentUser.user.subjects.add(subject)
-    }
-
-    override fun onSubjectRemoved(subject: Subject) {
-        CurrentUser.user.subjects.remove(subject)
     }
 
     private fun initRecyclerView() {

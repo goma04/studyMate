@@ -9,7 +9,6 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import goma.tanulotars.ImageIdGetter
 import goma.tanulotars.interfaces.OnUserLoaded
-import goma.tanulotars.model.CurrentUser
 import goma.tanulotars.model.User
 
 object FirebaseUtility {
@@ -48,7 +47,7 @@ object FirebaseUtility {
         )
 
         db.collection("users")
-            .document(CurrentUser.user.id)
+            .document(user.id)
             .set(newUser)
     }
 

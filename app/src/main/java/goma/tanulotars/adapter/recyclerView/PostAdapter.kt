@@ -70,6 +70,10 @@ class PostsAdapter(val context: Context, val postClickListener: PostClickListene
             .getIdentifier("drawable/$imageName", null, context.packageName)
     }
 
+    public fun clearList(){
+        postList.clear()
+    }
+
     companion object {
         object itemCallback : DiffUtil.ItemCallback<Post>() {
             override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {

@@ -1,7 +1,10 @@
 package goma.tanulotars.adapter.recyclerView
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -10,44 +13,17 @@ import goma.tanulotars.databinding.SubjectListItemBinding
 import goma.tanulotars.model.Subject
 
 class SubjectAdapter(
-    val subjectClickListener: SubjectClickListener,
-    private val selectedSubjects: MutableList<Subject>
+
+    private val currentUserSubjects: MutableList<Subject>
 ) :
     RecyclerView.Adapter<SubjectAdapter.SubjectViewHolder>() {
 
-    interface SubjectClickListener {
-        fun onSubjectAdded(subject: Subject)
-        fun onSubjectRemoved(subject: Subject)
-    }
+
 
     inner class SubjectViewHolder(val binding: SubjectListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         var subject: Subject? = null
-        var selected: Boolean? = null
-
-        init {
-            itemView.setOnClickListener {
-                subject?.let { subject ->
-                    if (!selected!!) {
-                        subjectClickListener.onSubjectAdded(subject)
-                        makeHolderAppearance(
-                            this,
-                            R.style.ListItemTextSelected,
-                            R.drawable.custom_subject_list_background_selected
-                        )
-
-                    } else {
-                        subjectClickListener.onSubjectRemoved(subject)
-                        makeHolderAppearance(
-                            this,
-                            R.style.ListItemText,
-                            R.drawable.custom_subject_list_background
-                        )
-                    }
-                    selected = !selected!!
-                }
-            }
-        }
+        val row_linearLayout = binding.subjectLinearLay
     }
 
     private fun makeHolderAppearance(
@@ -60,28 +36,39 @@ class SubjectAdapter(
     }
 
     private val subjects = mutableListOf<Subject>()
+    private var row_index = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = SubjectViewHolder(
         SubjectListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: SubjectAdapter.SubjectViewHolder, position: Int) {
         val subject = subjects[position]
 
+        holder.row_linearLayout.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                row_index = position
+                if (!currentUserSubjects.remove(subject)) {
+                    currentUserSubjects += subject
+                }
 
-        holder.subject = subject
+                notifyDataSetChanged()
+            }
+        })
 
         holder.binding.tvSubjectName.text = subject.name
-        holder.selected = false
 
-        if (selectedSubjects.contains(subject)) {
-            Log.d("selected", "current: $subject | $selectedSubjects")
-            holder.selected = true
+        if (currentUserSubjects.contains(subject)) {
+            makeHolderAppearance(
+                holder,
+                R.style.ListItemText,
+                R.drawable.custom_subject_list_background_selected)
+        }else{
             makeHolderAppearance(
                 holder,
                 R.style.ListItemTextSelected,
-                R.drawable.custom_subject_list_background_selected
-            )
+                R.drawable.custom_subject_list_background)
         }
     }
 

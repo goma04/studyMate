@@ -26,18 +26,6 @@ class ProfileFragment() : Fragment() {
         user = gson.fromJson(userJson, user::class.java)
         binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
 
-        setBindings()
-
-        var tvSubjectsText = ""
-        for (subject in user.subjects) {
-            tvSubjectsText += subject.name
-
-            if (user.subjects.last() != subject)
-                tvSubjectsText += ", "
-        }
-
-
-        binding.tvSubjectsProfileFragment.text = tvSubjectsText
 
         return binding.root
     }
@@ -53,24 +41,39 @@ class ProfileFragment() : Fragment() {
         binding.tvInstagramProfileFragment.text = user.instagram
         binding.tvOtherContactProfileFragment.text = user.otherContact
 
+        var tvSubjectsText = ""
+        for (subject in user.subjects) {
+            tvSubjectsText += subject.name
+
+            if (user.subjects.last() != subject)
+                tvSubjectsText += ", "
+        }
+
+        binding.tvSubjectsProfileFragment.text = tvSubjectsText
+
+
 
         if (user.id != CurrentUser.user.id) {
             binding.btnSendMessage.setOnClickListener {
-                if (user in CurrentUser.user.friends) {
+                if (CurrentUser.user.friends.any { it.id == user.id }) {
                     Toast.makeText(
                         requireContext(),
                         "${user.name} már a tanulótársad!",
-                        Toast.LENGTH_LONG
+                        Toast.LENGTH_SHORT
                     ).show()
-                    CurrentUser.user.friends += user
-                    FirebaseUtility.updateOrCreateUser(CurrentUser.user)
+
                 }
-                else
+                else {
+                    CurrentUser.user.friends += user
+                    user.friends += CurrentUser.user
+                    FirebaseUtility.updateOrCreateUser(CurrentUser.user)
+                    FirebaseUtility.updateOrCreateUser(user)
                     Toast.makeText(
                         requireContext(),
                         "${user.name} hozzáadva a tanulótársakhoz!",
-                        Toast.LENGTH_LONG
+                        Toast.LENGTH_SHORT
                     ).show()
+                }
 
 
 

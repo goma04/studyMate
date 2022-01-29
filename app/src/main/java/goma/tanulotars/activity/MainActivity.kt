@@ -1,13 +1,14 @@
 package goma.tanulotars.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.ui.AppBarConfiguration
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import goma.tanulotars.R
 import goma.tanulotars.databinding.ActivityMainBinding
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val postsFragment = PostsFragment()
     private val friendsFragment = FriendsFragment()
     private var profileFragment: ProfileFragment = initProfile(CurrentUser.user)
-    private var currentFragment: Fragment = postsFragment
+    private var currentFragment: Fragment = Fragment()
     private lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,6 +62,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                 changeFragment(profileFragment)
             }
+            R.id.nav_logout -> {
+                FirebaseAuth.getInstance().signOut()
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
         }
 
         binding.drawerLayout.closeDrawer(GravityCompat.START)
@@ -68,6 +74,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun changeFragment(newFragment: Fragment) {
+        if(currentFragment == newFragment)
+            return
+
         supportFragmentManager.beginTransaction().remove(currentFragment).commit()
         supportFragmentManager.beginTransaction()
             .add(R.id.fragmentContainerView, newFragment)

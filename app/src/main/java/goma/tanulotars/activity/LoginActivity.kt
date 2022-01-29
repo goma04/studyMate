@@ -65,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
                         val user = auth.currentUser
 
                         initUser(user)
-                        startActivity(Intent(this,MainActivity::class.java))
+
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "signInWithEmail:failure", task.exception)
@@ -92,13 +92,13 @@ class LoginActivity : AppCompatActivity() {
             .addOnSuccessListener { document ->
                 if (document != null) {
                     Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    CurrentUser.user = document.toObject<User>()!!
                     CurrentUser.user.id = user.uid
+                    CurrentUser.user = document.toObject<User>()!!
                     val res = getImageId(this, CurrentUser.user.profilePictureId.toString())
                     //TODO remove CurrentUser.user.profilePicture = resources.getDrawable(res, this.theme)
                     CurrentUser.user.profilePicture = BitmapFactory.decodeResource(resources, res)
 
-
+                    startActivity(Intent(this,MainActivity::class.java))
 
                 } else {
                     Log.d(TAG, "No such document")
@@ -111,26 +111,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun initRegisterButton() {
         binding.btnRegister.setOnClickListener {
-            val email = binding.etEmail.text.toString()
-            val password = binding.etPassword.text.toString()
-
-            auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Log.d(TAG, "createUserWithEmail:success")
-                        val user = auth.currentUser
-                        startActivity(Intent(this, RegisterActivity::class.java))
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                        Toast.makeText(
-                            baseContext, "Authentication failed.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        //TODO display failed registration
-                    }
-                }
+           startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 

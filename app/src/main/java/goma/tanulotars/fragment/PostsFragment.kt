@@ -27,6 +27,7 @@ import goma.tanulotars.model.User
 class PostsFragment : Fragment(), PostsAdapter.PostClickListener {
     private lateinit var binding: FragmentPostsBinding
     private lateinit var postsAdapter: PostsAdapter
+    private val db = Firebase.firestore
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,12 +46,19 @@ class PostsFragment : Fragment(), PostsAdapter.PostClickListener {
             startActivity(createPostIntent)
         }
 
+        postsAdapter.clearList()
         initPostsListener()
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.rvPosts.scrollToPosition(postsAdapter.itemCount-1)
+    }
+
+
     private fun initPostsListener() {
-        val db = Firebase.firestore
+
         db.collection("posts")
             .addSnapshotListener { snapshots, e ->
                 if (e != null) {
@@ -59,10 +67,16 @@ class PostsFragment : Fragment(), PostsAdapter.PostClickListener {
 
                 for (dc in snapshots!!.documentChanges) {
                     when (dc.type) {
-                        DocumentChange.Type.ADDED -> postsAdapter.addPost(dc.document.toObject<Post>())
+                        DocumentChange.Type.ADDED -> {
+
+                                postsAdapter.addPost(dc.document.toObject())
+                        }
                         DocumentChange.Type.MODIFIED -> {}//TODO
-                        DocumentChange.Type.REMOVED
-                        -> postsAdapter.removePost(dc.document.toObject<Post>())
+                        DocumentChange.Type.REMOVED -> {
+
+                                postsAdapter.removePost(dc.document.toObject())
+                        }
+
                     }
                 }
             }

@@ -14,11 +14,11 @@ import goma.tanulotars.model.CurrentUser
 import goma.tanulotars.model.Level
 import goma.tanulotars.model.Subject
 
-class SubjectFragment() : Fragment(), SubjectAdapter.SubjectClickListener {
+class SubjectFragment() : Fragment() {
     private lateinit var binding: FragmentSubjectBinding
 
-    private val intermediateAdapter = SubjectAdapter(this, CurrentUser.user.subjects)
-    private val advancedAdapter = SubjectAdapter(this, CurrentUser.user.subjects)
+    private val intermediateAdapter = SubjectAdapter(CurrentUser.user.subjects)
+    private val advancedAdapter = SubjectAdapter( CurrentUser.user.subjects)
     private var intermediate = true
     private val subjects = listOf(
         Subject(1, "Magyar", Level.INTERMEDIATE),
@@ -92,12 +92,4 @@ class SubjectFragment() : Fragment(), SubjectAdapter.SubjectClickListener {
     }
 
 
-
-    override fun onSubjectAdded(subject: Subject) {
-        CurrentUser.user.subjects.add(subject)
-    }
-
-    override fun onSubjectRemoved(subject: Subject) {
-        CurrentUser.user.subjects.remove(subject)
-    }
 }

@@ -15,12 +15,11 @@ import goma.tanulotars.adapter.recyclerView.SubjectAdapter
 import goma.tanulotars.databinding.FragmentSummaryBinding
 import goma.tanulotars.firebase.FirebaseUtility
 import goma.tanulotars.model.CurrentUser
-import goma.tanulotars.model.Subject
 import kotlin.concurrent.thread
 
-class SummaryFragment() : Fragment(), SubjectAdapter.SubjectClickListener {
+class SummaryFragment() : Fragment() {
     private lateinit var binding: FragmentSummaryBinding
-    private val intermediateSubjectsAdapter = SubjectAdapter(this, mutableListOf())
+    private val intermediateSubjectsAdapter = SubjectAdapter( mutableListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -77,11 +76,5 @@ class SummaryFragment() : Fragment(), SubjectAdapter.SubjectClickListener {
         }
     }
 
-    override fun onSubjectAdded(subject: Subject) {
 
-    }
-
-    override fun onSubjectRemoved(subject: Subject) {
-
-    }
 }
