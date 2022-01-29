@@ -1,13 +1,11 @@
 package goma.tanulotars.activity
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.media.Image
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -19,7 +17,6 @@ import goma.tanulotars.firebase.FirebaseUtility
 import goma.tanulotars.model.CurrentUser
 import goma.tanulotars.model.Level
 import goma.tanulotars.model.Subject
-import kotlin.concurrent.thread
 
 class RegisterActivity : AppCompatActivity(), SubjectAdapter.SubjectClickListener {
     private lateinit var binding: ActivityRegisterBinding
@@ -107,6 +104,7 @@ class RegisterActivity : AppCompatActivity(), SubjectAdapter.SubjectClickListene
         CurrentUser.user.facebook = binding.etFacebook.text.toString()
         CurrentUser.user.instagram = binding.etInstagram.text.toString()
         CurrentUser.user.name = binding.editTextTextPersonName.text.toString()
+        CurrentUser.user.otherContact = binding.etOther.text.toString()
     }
 
     private fun setUserProfilePicture() {

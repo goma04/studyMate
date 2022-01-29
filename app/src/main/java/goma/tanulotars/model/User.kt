@@ -14,7 +14,8 @@ class User(
     var token :String="",
     var instagram :String="",
     var facebook :String="",
-    var email: String = ""
+    var email: String = "",
+    var otherContact: String = ""
 
 ) : Entity(), Serializable {
 

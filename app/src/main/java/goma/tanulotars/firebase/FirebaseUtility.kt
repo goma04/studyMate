@@ -28,7 +28,8 @@ object FirebaseUtility {
                 "profilePictureId" to friend.profilePictureId,
                 "id" to friend.id,
                 "facebook" to friend.facebook,
-                "instagram" to friend.instagram
+                "instagram" to friend.instagram,
+                "otherContact" to friend.otherContact
             )
         }
 
@@ -42,7 +43,8 @@ object FirebaseUtility {
             "id" to user.id,
             "facebook" to user.facebook,
             "instagram" to user.instagram,
-            "friends" to friendListToSave
+            "friends" to friendListToSave,
+            "otherContact" to user.otherContact
         )
 
         db.collection("users")

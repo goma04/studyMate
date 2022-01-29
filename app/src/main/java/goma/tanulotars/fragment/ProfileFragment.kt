@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
 import goma.tanulotars.databinding.FragmentProfileBinding
@@ -50,15 +51,31 @@ class ProfileFragment() : Fragment() {
         binding.tvSubjectCountProfileFragment.text = user.subjects.size.toString()
         binding.tvFacebookProfileFragment.text = user.facebook
         binding.tvInstagramProfileFragment.text = user.instagram
+        binding.tvOtherContactProfileFragment.text = user.otherContact
 
 
-        if(user.id != CurrentUser.user.id){
+        if (user.id != CurrentUser.user.id) {
             binding.btnSendMessage.setOnClickListener {
-                user
-                CurrentUser.user.friends += user
-                FirebaseUtility.updateOrCreateUser(CurrentUser.user)
+                if (user in CurrentUser.user.friends) {
+                    Toast.makeText(
+                        requireContext(),
+                        "${user.name} már a tanulótársad!",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    CurrentUser.user.friends += user
+                    FirebaseUtility.updateOrCreateUser(CurrentUser.user)
+                }
+                else
+                    Toast.makeText(
+                        requireContext(),
+                        "${user.name} hozzáadva a tanulótársakhoz!",
+                        Toast.LENGTH_LONG
+                    ).show()
+
+
+
             }
-        }else{
+        } else {
             binding.btnSendMessage.visibility = View.GONE
         }
 
