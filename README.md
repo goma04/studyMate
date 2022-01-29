@@ -1,0 +1,1 @@
+Egy olyan Android alkalmazás, ahol a diákok tanulótársakat találhatnak egy adott feladathoz. Regisztráció után lehetőség van posztolni, keresgélni a már feladott hirdetések között, profilt módosítani, tanulótársakat felvenni. A backend (autentikáció, adatbázis, hálózat) firebase alapokra épül.
