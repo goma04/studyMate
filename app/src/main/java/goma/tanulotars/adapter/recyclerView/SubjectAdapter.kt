@@ -1,8 +1,6 @@
 package goma.tanulotars.adapter.recyclerView
 
 import android.annotation.SuppressLint
-import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,7 +41,7 @@ class SubjectAdapter(
     )
 
     @SuppressLint("ResourceAsColor")
-    override fun onBindViewHolder(holder: SubjectAdapter.SubjectViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SubjectAdapter.SubjectViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val subject = subjects[position]
 
         holder.row_linearLayout.setOnClickListener(object : View.OnClickListener {
@@ -59,7 +57,7 @@ class SubjectAdapter(
 
         holder.binding.tvSubjectName.text = subject.name
 
-        if (currentUserSubjects.contains(subject)) {
+        if (currentUserSubjects.any{ it.id == subject.id }) {
             makeHolderAppearance(
                 holder,
                 R.style.ListItemText,
@@ -70,6 +68,7 @@ class SubjectAdapter(
                 R.style.ListItemTextSelected,
                 R.drawable.custom_subject_list_background)
         }
+
     }
 
     override fun getItemCount(): Int {

@@ -1,5 +1,5 @@
 package goma.tanulotars.model
 
 abstract class Entity {
-    public lateinit var id: String
+    public var id: String = "0"
 }

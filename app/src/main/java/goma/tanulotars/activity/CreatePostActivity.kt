@@ -54,7 +54,8 @@ class CreatePostActivity : AppCompatActivity() {
 
 
         db.collection("posts")
-            .add(newPost)
+            .document(newPost.uid!!)
+            .set(newPost)
             .addOnSuccessListener {
                 Toast.makeText(this, "Sikeres!", Toast.LENGTH_SHORT).show()
                 finish()

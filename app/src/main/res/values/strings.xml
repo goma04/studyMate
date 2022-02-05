@@ -47,4 +47,6 @@
     <string name="message">Üzenet</string>
     <string name="add_mate">Felvétel társnak</string>
     <string name="accept">ok</string>
+    <string name="namesPost">%1$s Posztjai</string>
+    <string name="password">Jelszó</string>
 </resources>

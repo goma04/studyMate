@@ -16,22 +16,26 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import goma.tanulotars.databinding.ActivityLoginBinding
-import goma.tanulotars.interfaces.OnUserLoaded
 import goma.tanulotars.model.CurrentUser
 import goma.tanulotars.model.User
 
 class LoginActivity : AppCompatActivity() {
-    companion object{
-        var onUserLoadedListener: OnUserLoaded? = null
-    }
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        auth = Firebase.auth
+        if(auth.currentUser != null){
+            val user = auth.currentUser
 
+            initUser(user)
+            startActivity(Intent(this,MainActivity::class.java))
+        }
+
+
+        super.onCreate(savedInstanceState)
         // When running in debug mode, connect to the Firebase Emulator Suite.
         // "10.0.2.2" is a special IP address which allows the Android Emulator
         // to connect to "localhost" on the host computer. The port values (9xxx)
@@ -43,8 +47,10 @@ class LoginActivity : AppCompatActivity() {
         }*/
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
-        auth = Firebase.auth
+
         setContentView(binding.root)
+
+
 
         initRegisterButton()
 

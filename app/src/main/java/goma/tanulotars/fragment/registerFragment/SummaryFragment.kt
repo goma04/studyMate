@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import goma.tanulotars.activity.LoginActivity
 import goma.tanulotars.activity.MainActivity
 import goma.tanulotars.adapter.recyclerView.SubjectAdapter
 import goma.tanulotars.databinding.FragmentSummaryBinding
@@ -53,7 +52,6 @@ class SummaryFragment() : Fragment() {
             thread {
                 //TODO ez rettentő csúnya így
                 Thread.sleep(200)
-                LoginActivity.onUserLoadedListener?.onUserLoaded(CurrentUser.user)
             }
 
 

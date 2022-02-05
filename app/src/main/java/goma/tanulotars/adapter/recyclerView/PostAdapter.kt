@@ -72,6 +72,19 @@ class PostsAdapter(val context: Context, val postClickListener: PostClickListene
 
     public fun clearList(){
         postList.clear()
+        notifyDataSetChanged()
+    }
+
+    fun update(posts: List<Post>) {
+        postList.clear()
+        postList.addAll(posts)
+
+        notifyDataSetChanged()
+    }
+
+    fun remove(post: Post){
+        postList.remove(post)
+        notifyDataSetChanged()
     }
 
     companion object {

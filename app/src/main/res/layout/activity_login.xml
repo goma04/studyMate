@@ -34,7 +34,7 @@
                 android:hint="Email"
 
                 android:inputType="textEmailAddress"
-                android:text="gomarci04@gmail.com" />
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,9 +49,9 @@
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="@string/password"
                 android:inputType="textPassword"
-                android:text="BIzsu1234" />
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 

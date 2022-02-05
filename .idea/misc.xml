@@ -21,29 +21,39 @@
         <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/layout/subject_list_item.xml" value="0.21666666666666667" />
         <entry key="..\:/Programozas/Android/studyMate/app/src/main/res/menu/activity_main_menu.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/drawable-mdpi/border.xml" value="0.22320675105485233" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1445" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/drawable/buttonstyleithgradient.xml" value="0.23796296296296296" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/drawable/custom_subject_list_background.xml" value="0.18541666666666667" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/drawable/custom_subject_list_background_selected.xml" value="0.17135416666666667" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/drawable/ic_menu_camera.xml" value="0.1445" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/font/roboto_slab.xml" value="0.19947916666666668" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/activity_basic_info_slide.xml" value="0.1381340579710145" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/activity_chat.xml" value="0.12613981762917933" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/activity_create_post.xml" value="0.264" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/activity_edit_profile.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/activity_firebase_uiactivity.xml" value="0.18931159420289856" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/activity_main.xml" value="0.1983695652173913" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/activity_profile.xml" value="0.11005434782608696" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/activity_register.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/activity_slideScreen.xml" value="0.4" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/activity_slide_screen.xml" value="0.16927083333333334" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/app_bar_main.xml" value="0.12613981762917933" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/card_post.xml" value="0.12613981762917933" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_friends.xml" value="0.11005434782608696" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_hello.xml" value="0.16927083333333334" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_introduction.xml" value="0.16927083333333334" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_name.xml" value="0.264" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_posts.xml" value="0.18614130434782608" />
-        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_profile.xml" value="0.2275943396226415" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_profile_copy.xml" value="0.24939320388349515" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_profile_picture.xml" value="0.152" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_profile_update.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_screen_slide_page.xml" value="0.259375" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_subject.xml" value="0.16927083333333334" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/fragment_summary.xml" value="0.12" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/friend_list_item.xml" value="0.11005434782608696" />
+        <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/nav_header_main.xml" value="0.264" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/subject_list.xml" value="0.23369565217391305" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/subject_list_item.xml" value="0.13179347826086957" />
         <entry key="..\:/Users/Goma/AndroidStudioProjects/tanulotars/app/src/main/res/layout/viewpager.xml" value="0.16927083333333334" />
