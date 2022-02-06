@@ -3,6 +3,7 @@ package goma.tanulotars.fragment
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
+import goma.tanulotars.ImageIdGetter
 import goma.tanulotars.R
 import goma.tanulotars.activity.EditProfileActivity
 import goma.tanulotars.adapter.recyclerView.PostsAdapter
@@ -39,6 +41,10 @@ class ProfileFragment() : Fragment(), PostsAdapter.PostClickListener {
         val userJson = requireArguments().getString("userJson")
         user = gson.fromJson(userJson, user::class.java)
         binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
+
+        val res = ImageIdGetter.getImageId(requireContext(), user.profilePictureId)
+
+        user.profilePicture = BitmapFactory.decodeResource(resources, res)
 
         postsAdapter = PostsAdapter(requireContext(), this)
         binding.rvPosts.adapter = postsAdapter
@@ -76,20 +82,21 @@ class ProfileFragment() : Fragment(), PostsAdapter.PostClickListener {
         binding.tvNameProfileFragment.text = user.name
         binding.ivProfilePictureProfileFragment.setImageBitmap(user.profilePicture)
         binding.tvDesc.text = user.introduction
-        binding.tvMatesNumberProfileFragment.text = user.friends.size.toString()
-        binding.tvSubjectCountProfileFragment.text = user.subjects.size.toString()
         binding.tvFacebookProfileFragment.text = user.facebook
         binding.tvInstagramProfileFragment.text = user.instagram
         binding.tvOtherContactProfileFragment.text = user.otherContact
 
-        if(user.facebook == "")
+        if (user.facebook == "")
             binding.fbContainer.visibility = View.GONE
 
-        if(user.instagram == "")
+        if (user.instagram == "")
             binding.instaContainer.visibility = View.GONE
 
-        if(user.otherContact == "")
+        if (user.otherContact == "")
             binding.otherContainer.visibility = View.GONE
+
+        if (user.introduction == "")
+            binding.introContainer.visibility = View.GONE
 
         var tvSubjectsText = ""
         for (subject in user.subjects) {
@@ -120,27 +127,26 @@ class ProfileFragment() : Fragment(), PostsAdapter.PostClickListener {
     }
 
     private fun setOtherUserProfile() {
-        binding.tvNamePost.text = "${user.name} posztjai"
+
+
+        if (CurrentUser.user.friends.any { it.id == user.id }) {
+            binding.btnSendMessage.visibility = View.GONE
+            binding.tvStudyMateInfo.visibility = View.VISIBLE
+
+            binding.tvStudyMateInfo.text = "${user.name} a tanulótársad!"
+        }
 
         binding.btnSendMessage.setOnClickListener {
-            if (CurrentUser.user.friends.any { it.id == user.id }) {
-                Toast.makeText(
-                    requireContext(),
-                    "${user.name} már a tanulótársad!",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-            } else {
-                CurrentUser.user.friends += user
-                user.friends += CurrentUser.user
-                FirebaseUtility.updateOrCreateUser(CurrentUser.user)
-                FirebaseUtility.updateOrCreateUser(user)
-                Toast.makeText(
-                    requireContext(),
-                    "${user.name} hozzáadva a tanulótársakhoz!",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+            CurrentUser.user.friends += user
+            user.friends += CurrentUser.user
+            FirebaseUtility.updateOrCreateUser(CurrentUser.user)
+            FirebaseUtility.updateOrCreateUser(user)
+            Toast.makeText(
+                requireContext(),
+                "${user.name} hozzáadva a tanulótársakhoz!",
+                Toast.LENGTH_SHORT
+            ).show()
+            binding.btnSendMessage.visibility = View.GONE
         }
     }
 
@@ -163,6 +169,7 @@ class ProfileFragment() : Fragment(), PostsAdapter.PostClickListener {
                                     "Poszt sikeresen törölve!",
                                     Toast.LENGTH_SHORT
                                 ).show()
+                                postsAdapter.remove(post)
                             }
                             .addOnFailureListener {
                                 Toast.makeText(
@@ -171,7 +178,7 @@ class ProfileFragment() : Fragment(), PostsAdapter.PostClickListener {
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
-                        postsAdapter.remove(post)
+
                     })
                 .setNegativeButton("cancel",
                     DialogInterface.OnClickListener { dialog, which -> dialog.dismiss() })

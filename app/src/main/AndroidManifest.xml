@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Tanulotars"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.HelpActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.EditProfileActivity"
             android:exported="false" />
         <activity

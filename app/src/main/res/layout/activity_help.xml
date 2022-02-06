@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/LightYellow"
+    android:orientation="vertical"
+    android:paddingHorizontal="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/ViewPagerHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:gravity="center_horizontal"
+                android:text="segítség" />
+
+            <TextView
+                style="@style/ViewPagerSmallHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Új poszt létrehozása" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="A főoldalon a '+' gombot megnyomva tudsz új posztot létrehozni." />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/help1" />
+
+            <TextView
+                style="@style/ViewPagerSmallHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Poszt törlése" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="A profil almenüben láthatod a saját posztjaidat. A törléshez válaszd ki az egyiket." />
+
+            <TextView
+                style="@style/ViewPagerSmallHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tanulótárs felvétele" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_study_mate" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/help2" />
+
+            <TextView
+                style="@style/ViewPagerSmallHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Emberek keresése" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/find_mate" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

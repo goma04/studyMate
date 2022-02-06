@@ -9,13 +9,12 @@ import goma.tanulotars.ImageIdGetter
 import goma.tanulotars.databinding.FriendListItemBinding
 import goma.tanulotars.model.User
 
-class FriendAdapter(
-    private val friendList: MutableList<User>,
+class StudentAdapter(
+    private val studentList: MutableList<User>,
     val context: Context,
-    val friendClickListener: FriendClickListener
+    val studentClickListener: FriendClickListener
 ) :
-    RecyclerView.Adapter<FriendAdapter.FriendViewHolder>() {
-
+    RecyclerView.Adapter<StudentAdapter.FriendViewHolder>() {
 
 
     interface FriendClickListener {
@@ -25,9 +24,10 @@ class FriendAdapter(
     inner class FriendViewHolder(val binding: FriendListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         var friend: User? = null
-        init{
-            itemView.setOnClickListener{
-                friendClickListener.onFriendClicked(friend!!)
+
+        init {
+            itemView.setOnClickListener {
+                studentClickListener.onFriendClicked(friend!!)
             }
         }
 
@@ -36,13 +36,13 @@ class FriendAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): FriendAdapter.FriendViewHolder = FriendViewHolder(
+    ): StudentAdapter.FriendViewHolder = FriendViewHolder(
         FriendListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
     @SuppressLint("UseCompatLoadingForDrawables")
-    override fun onBindViewHolder(holder: FriendAdapter.FriendViewHolder, position: Int) {
-        val friend = friendList[position]
+    override fun onBindViewHolder(holder: StudentAdapter.FriendViewHolder, position: Int) {
+        val friend = studentList[position]
         holder.friend = friend
 
         var tvSubjectsText = ""
@@ -54,15 +54,50 @@ class FriendAdapter(
         }
 
         val res = ImageIdGetter.getImageId(context, friend.profilePictureId)
-        holder.binding.ivProfilePictureFriendList.setImageDrawable(context.resources.getDrawable(res, context.theme))
+        holder.binding.ivProfilePictureFriendList.setImageDrawable(
+            context.resources.getDrawable(
+                res,
+                context.theme
+            )
+        )
         holder.binding.tvFriendName.text = friend.name
         holder.binding.tvFriendSubjects.text = tvSubjectsText
 
     }
 
 
-
     override fun getItemCount(): Int {
-        return friendList.size
+        return studentList.size
+    }
+
+    fun addStudent(student: User?) {
+        student ?: return
+
+        studentList.add(student)
+
+        notifyDataSetChanged()
+
+
+    }
+
+    fun update(student: User?) {
+        student ?: return
+
+        studentList[studentList.indexOf(studentList.find{it.id == student.id})] = student
+        notifyDataSetChanged()
+    }
+
+    fun update(students: List<User>?) {
+        students ?: return
+
+        studentList.clear()
+        studentList.addAll(students)
+        notifyDataSetChanged()
+    }
+
+    fun removeStudent(student: User?) {
+        student ?: return
+
+        studentList.remove(student)
     }
 }

@@ -40,6 +40,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         changeFragment(postsFragment)
         binding.navView.setNavigationItemSelectedListener(this)
+
+
+        binding.btnLogout.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
+            CurrentUser.user = User()
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+
+        binding.btHelp.setOnClickListener {
+            startActivity(Intent(this, HelpActivity::class.java))
+        }
     }
 
 
@@ -61,12 +73,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 profileFragment.arguments = bundle
 
                 changeFragment(profileFragment)
-            }
-            R.id.nav_logout -> {
-                FirebaseAuth.getInstance().signOut()
-                CurrentUser.user = User()
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
             }
         }
 

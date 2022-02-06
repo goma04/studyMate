@@ -10,7 +10,10 @@ import goma.tanulotars.databinding.ActivityCreatePostBinding
 import goma.tanulotars.extension.validateNonEmpty
 import goma.tanulotars.model.CurrentUser
 import goma.tanulotars.model.Post
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
+
 
 class CreatePostActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreatePostBinding
@@ -41,13 +44,18 @@ class CreatePostActivity : AppCompatActivity() {
         binding.etTitle.validateNonEmpty() && binding.etBody.validateNonEmpty()
 
     private fun uploadPost() {
+        val localDate = LocalDateTime.now()
+        val formatter: DateTimeFormatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME
+        val dateString: String = localDate.format(formatter)
+
         val newPost = Post(
             UUID.randomUUID().toString(),
             CurrentUser.user.name,
             binding.etTitle.text.toString(),
             binding.etBody.text.toString(),
             CurrentUser.user.profilePictureId,
-            CurrentUser.user.id
+            CurrentUser.user.id,
+            dateString
         )
 
         val db = Firebase.firestore

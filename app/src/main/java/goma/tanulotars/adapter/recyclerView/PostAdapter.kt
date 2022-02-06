@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import goma.tanulotars.R
 import goma.tanulotars.databinding.CardPostBinding
 import goma.tanulotars.model.Post
 
@@ -47,7 +48,12 @@ class PostsAdapter(val context: Context, val postClickListener: PostClickListene
 
         val res = getImageId(context, tmpPost.profilePictureId.toString())
 
-        holder.binding.ivProfilePicture.setImageDrawable(context.resources.getDrawable(res, context.theme))
+        try {
+            holder.binding.ivProfilePicture.setImageDrawable(context.resources.getDrawable(res, context.theme))
+        }catch (exception: Exception){
+            holder.binding.ivProfilePicture.setImageDrawable(context.resources.getDrawable(R.drawable.avatar1, context.theme))
+        }
+
     }
 
     fun addPost(post: Post?) {
@@ -55,6 +61,8 @@ class PostsAdapter(val context: Context, val postClickListener: PostClickListene
 
         postList += (post)
         submitList((postList))
+        postList.sortBy { it.date }
+        notifyDataSetChanged()
     }
 
     fun removePost(post: Post?){
@@ -62,7 +70,10 @@ class PostsAdapter(val context: Context, val postClickListener: PostClickListene
 
         postList.remove(post)
         submitList((postList))
+        notifyDataSetChanged()
     }
+
+
 
     //TODO ezt ki lehetne szervezni valami extension methoddá
     private fun getImageId(context: Context, imageName: String): Int {
@@ -70,14 +81,17 @@ class PostsAdapter(val context: Context, val postClickListener: PostClickListene
             .getIdentifier("drawable/$imageName", null, context.packageName)
     }
 
-    public fun clearList(){
+    fun clearList(){
         postList.clear()
         notifyDataSetChanged()
     }
 
-    fun update(posts: List<Post>) {
-        postList.clear()
-        postList.addAll(posts)
+
+
+    fun update(post: Post) {
+
+
+        postList[postList.indexOf(postList.find{it.uid.equals(post.uid)})] = post
 
         notifyDataSetChanged()
     }

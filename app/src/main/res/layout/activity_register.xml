@@ -16,6 +16,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -207,7 +209,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="40dp"
                 android:fontFamily="@font/roboto_slab"
                 android:gravity="center"
                 android:text="Válassz profilképet"
@@ -216,31 +218,24 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:weightSum="2"
                 android:orientation="horizontal">
 
                 <ImageButton
+                    style="@style/ibProfilePictureChoose"
                     android:id="@+id/imageButton1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
+
                     android:src="@drawable/avatar1"
                     android:tag="avatar1"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <ImageButton
                     android:id="@+id/imageButton2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    style="@style/ibProfilePictureChoose"
+
                     android:src="@drawable/avatar2"
                     android:tag="avatar2"
                     tools:srcCompat="@tools:sample/avatars" />
-
-
             </LinearLayout>
 
 
@@ -252,22 +247,14 @@
 
                 <ImageButton
                     android:id="@+id/imageButton3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    style="@style/ibProfilePictureChoose"
                     android:src="@drawable/avatar3"
                     android:tag="avatar3"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <ImageButton
                     android:id="@+id/imageButton4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    style="@style/ibProfilePictureChoose"
                     android:src="@drawable/avatar4"
                     android:tag="avatar4"
                     tools:srcCompat="@tools:sample/avatars" />
@@ -283,22 +270,14 @@
 
                 <ImageButton
                     android:id="@+id/imageButton5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    style="@style/ibProfilePictureChoose"
                     android:src="@drawable/avatar5"
                     android:tag="avatar5"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <ImageButton
                     android:id="@+id/imageButton6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    style="@style/ibProfilePictureChoose"
                     android:src="@drawable/avatar6"
                     android:tag="avatar6"
                     tools:srcCompat="@tools:sample/avatars" />
@@ -309,27 +288,20 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:weightSum="2"
                 android:orientation="horizontal">
 
 
                 <ImageButton
                     android:id="@+id/imageButton7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    style="@style/ibProfilePictureChoose"
                     android:src="@drawable/avatar7"
                     android:tag="avatar7"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <ImageButton
                     android:id="@+id/imageButton8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    style="@style/ibProfilePictureChoose"
                     android:src="@drawable/avatar8"
                     android:tag="avatar8"
                     tools:srcCompat="@tools:sample/avatars" />
@@ -345,22 +317,14 @@
 
                 <ImageButton
                     android:id="@+id/imageButton9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    style="@style/ibProfilePictureChoose"
                     android:src="@drawable/avatar9"
                     android:tag="avatar9"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <ImageButton
                     android:id="@+id/imageButton10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    style="@style/ibProfilePictureChoose"
                     android:src="@drawable/avatar10"
                     android:tag="avatar10"
                     tools:srcCompat="@tools:sample/avatars" />
@@ -376,22 +340,14 @@
 
                 <ImageButton
                     android:id="@+id/imageButton11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    style="@style/ibProfilePictureChoose"
                     android:src="@drawable/avatar11"
                     android:tag="avatar11"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <ImageButton
                     android:id="@+id/imageButton12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    style="@style/ibProfilePictureChoose"
                     android:src="@drawable/avatar12"
                     android:tag="avatar12"
                     tools:srcCompat="@tools:sample/avatars" />
@@ -407,28 +363,66 @@
 
                 <ImageButton
                     android:id="@+id/imageButton13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    style="@style/ibProfilePictureChoose"
                     android:src="@drawable/avatar13"
                     android:tag="avatar13"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <ImageButton
                     android:id="@+id/imageButton14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:layout_weight="1"
-                    android:background="@null"
+                    style="@style/ibProfilePictureChoose"
                     android:src="@drawable/avatar14"
                     android:tag="avatar14"
                     tools:srcCompat="@tools:sample/avatars" />
 
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/imageButton15"
+                    style="@style/ibProfilePictureChoose"
+                    android:src="@drawable/avatar15"
+                    android:tag="avatar1"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <ImageButton
+                    android:id="@+id/imageButton16"
+                    style="@style/ibProfilePictureChoose"
+                    android:src="@drawable/avatar16"
+                    android:tag="avatar2"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/imageButton17"
+                    style="@style/ibProfilePictureChoose"
+                    android:src="@drawable/avatar17"
+                    android:tag="avatar17"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <ImageButton
+                    android:id="@+id/imageButton18"
+                    style="@style/ibProfilePictureChoose"
+                    android:src="@drawable/avatar18"
+                    android:tag="avatar18"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+
+            </LinearLayout>
+
 
 
             <Button

@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/LightYellow">
 
     <!-- Main content -->
 
@@ -16,6 +17,7 @@
         app:srcCompat="@drawable/add" />
 
     <LinearLayout
+        android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -26,8 +28,46 @@
             android:layout_width="match_parent"
             android:layout_height="70dp" />
 
+        <LinearLayout
+            android:layout_marginBottom="7dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:background="@color/SlateGray"
+                android:id="@+id/btPeople"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Emberek" />
+
+            <Button
+                android:id="@+id/btPost"
+                android:background="@color/lightGreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Posztok" />
+
+
+        </LinearLayout>
+
+        <Spinner
+            android:visibility="gone"
+            android:id="@+id/spinner"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPosts"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPeople"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>

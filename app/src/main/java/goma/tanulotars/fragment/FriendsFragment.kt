@@ -17,16 +17,16 @@ import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import goma.tanulotars.ImageIdGetter
 import goma.tanulotars.activity.ProfileActivity
-import goma.tanulotars.adapter.recyclerView.FriendAdapter
+import goma.tanulotars.adapter.recyclerView.StudentAdapter
 import goma.tanulotars.databinding.FragmentFriendsBinding
 import goma.tanulotars.model.CurrentUser
 import goma.tanulotars.model.User
 
-class FriendsFragment : Fragment(), FriendAdapter.FriendClickListener {
+class FriendsFragment : Fragment(), StudentAdapter.FriendClickListener {
     private lateinit var binding: FragmentFriendsBinding
     private lateinit var manager: LinearLayoutManager
     private lateinit var db: FirebaseDatabase
-    private lateinit var adapter: FriendAdapter
+    private lateinit var adapter: StudentAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +34,7 @@ class FriendsFragment : Fragment(), FriendAdapter.FriendClickListener {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFriendsBinding.inflate(layoutInflater, container, false)
-        adapter = FriendAdapter(CurrentUser.user.friends, requireContext(), this)
+        adapter = StudentAdapter(CurrentUser.user.friends, requireContext(), this)
         binding.rvFriends.adapter = adapter
         binding.rvFriends.layoutManager = LinearLayoutManager(view?.context)
 

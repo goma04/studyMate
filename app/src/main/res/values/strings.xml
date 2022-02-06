@@ -40,7 +40,50 @@
     <string name="settings">Beállítások</string>
     <string name="messages">Üzenetek</string>
     <string name="title_activity_main">MainActivity</string>
-
+    <string-array name="spinner_subjects">
+        <item>mindegy</item>
+        <item>matematika</item>
+        <item>magyar nyelv és irodalom</item>
+        <item>történelem</item>
+        <item>német nyelv</item>
+        <item>angol nyelv</item>
+        <item>francia nyelv</item>
+        <item>spanyol nyelv</item>
+        <item>olasz nyelv</item>
+        <item>japán nyelv</item>
+        <item>orosz nyelv</item>
+        <item>földrajz</item>
+        <item>biológia</item>
+        <item>informatika</item>
+        <item>ének-zene</item>
+        <item>belügyi rendészeti ismeretek</item>
+        <item>fizika</item>
+        <item>automatikai és elektronikai ismeretek</item>
+        <item>egészségügyi ismeretek</item>
+        <item>épületgépészeti ismeretek</item>
+        <item>faipari ismeretek</item>
+        <item>gazdasági ismeretek</item>
+        <item>mozgóképkultúra és médiaismeret</item>
+        <item>társadalomismeret</item>
+        <item>turizmus</item>
+        <item>vizuális kultúra</item>
+        <item>gépgyártás-technológiai ismeretek</item>
+        <item>ember- és társadalomismeret, etika</item>
+        <item>irodai ügyviteli ismeretek</item>
+        <item>kereskedelmi ismeretek</item>
+        <item>közgazdasági ismeretek</item>
+        <item>vegyész ismeretek</item>
+        <item>vendéglátóipari ismeretek</item>
+        <item>művészettörténet</item>
+        <item>filozófia</item>
+        <item>dráma</item>
+        <item>pszichológia</item>
+        <item>rajz</item>
+        <item>hittan</item>
+        <item>pszichológia</item>
+        <item>ágazati informatika</item>
+        <item>pedagógiai ismeretek</item>
+    </string-array>
     <string name="profile">Profil</string>
     <string name="study_mates">Tanulótársak</string>
     <string name="subjects">Tárgyak</string>
@@ -49,4 +92,6 @@
     <string name="accept">ok</string>
     <string name="namesPost">%1$s Posztjai</string>
     <string name="password">Jelszó</string>
+    <string name="add_study_mate">Valaki másnak a profilját megnyitva (a posztjára rányomva) a "felvétel tanulótársnak" gombot megnyomva veheted fel a tanulótársaid közé."</string>
+    <string name="find_mate">A főoldalon nyomd meg az \"emberek\" gombot, majd válaszd ki, hogy milyen tárgyból keresel társat.</string>
 </resources>

@@ -16,6 +16,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import goma.tanulotars.databinding.ActivityLoginBinding
+import goma.tanulotars.extension.validateNonEmpty
 import goma.tanulotars.model.CurrentUser
 import goma.tanulotars.model.User
 
@@ -27,11 +28,12 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         auth = Firebase.auth
-        if(auth.currentUser != null){
+        if (auth.currentUser != null) {
             val user = auth.currentUser
 
             initUser(user)
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
+
         }
 
 
@@ -60,8 +62,16 @@ class LoginActivity : AppCompatActivity() {
     private fun initLoginButton() {
 
         binding.btnLogin.setOnClickListener {
+
+            if (!(binding.etEmail.validateNonEmpty() && binding.etPassword.validateNonEmpty())) {
+                Toast.makeText(this,"Ne hagyd üresen a mezőket!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
+
+
 
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
@@ -71,12 +81,13 @@ class LoginActivity : AppCompatActivity() {
                         val user = auth.currentUser
 
                         initUser(user)
+                        startActivity(Intent(this, MainActivity::class.java))
 
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "signInWithEmail:failure", task.exception)
                         Toast.makeText(
-                            baseContext, "Authentication failed.",
+                            baseContext, "Sikertelen bejelentkezés",
                             Toast.LENGTH_SHORT
                         ).show()
                         //TODO failed login ui
@@ -84,7 +95,6 @@ class LoginActivity : AppCompatActivity() {
                 }
         }
     }
-
 
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -104,7 +114,6 @@ class LoginActivity : AppCompatActivity() {
                     //TODO remove CurrentUser.user.profilePicture = resources.getDrawable(res, this.theme)
                     CurrentUser.user.profilePicture = BitmapFactory.decodeResource(resources, res)
 
-                    startActivity(Intent(this,MainActivity::class.java))
 
                 } else {
                     Log.d(TAG, "No such document")
@@ -117,7 +126,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun initRegisterButton() {
         binding.btnRegister.setOnClickListener {
-           startActivity(Intent(this, RegisterActivity::class.java))
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 
@@ -125,7 +134,6 @@ class LoginActivity : AppCompatActivity() {
         return context.resources
             .getIdentifier("drawable/$imageName", null, context.packageName)
     }
-
 
 
     public override fun onStart() {
