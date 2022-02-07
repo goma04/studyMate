@@ -66,6 +66,7 @@ class PostsFragment : Fragment(), PostsAdapter.PostClickListener, AdapterView.On
             startActivity(createPostIntent)
         }
 
+
         initSpinner()
         initStudentRW()
         initPostsListener()

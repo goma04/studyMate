@@ -9,7 +9,8 @@ class User(
     var name: String = "",
     var introduction: String = "",
     val subjects: MutableList<Subject> = mutableListOf<Subject>(),
-    @Transient val friends: MutableList<User> = mutableListOf<User>(), //GSON nem serializálja, utólag kell feltölteni
+    @Transient var friends: MutableList<User> = mutableListOf<User>(), //GSON nem serializálja, utólag kell feltölteni
+    var friendsId: MutableList<String> = mutableListOf(),
     @Transient var profilePicture: Bitmap? = null,
     var profilePictureId: String = "avatar1",
     var token :String="",

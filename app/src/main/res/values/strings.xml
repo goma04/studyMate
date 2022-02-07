@@ -94,4 +94,7 @@
     <string name="password">Jelszó</string>
     <string name="add_study_mate">Valaki másnak a profilját megnyitva (a posztjára rányomva) a "felvétel tanulótársnak" gombot megnyomva veheted fel a tanulótársaid közé."</string>
     <string name="find_mate">A főoldalon nyomd meg az \"emberek\" gombot, majd válaszd ki, hogy milyen tárgyból keresel társat.</string>
+    <string name="login">Bejelentkezés</string>
+    <string name="register">Regisztráció</string>
+    <string name="new_friend">Új tanulótársaid vannak!\nMegtalálod őket a \"tanulótársak\" között.</string>
 </resources>

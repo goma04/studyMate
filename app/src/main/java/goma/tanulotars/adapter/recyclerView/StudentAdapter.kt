@@ -73,7 +73,8 @@ class StudentAdapter(
     fun addStudent(student: User?) {
         student ?: return
 
-        studentList.add(student)
+        if (!studentList.any { it.id == student.id })
+            studentList.add(student)
 
         notifyDataSetChanged()
 
@@ -83,7 +84,7 @@ class StudentAdapter(
     fun update(student: User?) {
         student ?: return
 
-        studentList[studentList.indexOf(studentList.find{it.id == student.id})] = student
+        studentList[studentList.indexOf(studentList.find { it.id == student.id })] = student
         notifyDataSetChanged()
     }
 

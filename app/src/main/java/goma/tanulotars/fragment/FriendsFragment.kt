@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -19,7 +21,9 @@ import goma.tanulotars.ImageIdGetter
 import goma.tanulotars.activity.ProfileActivity
 import goma.tanulotars.adapter.recyclerView.StudentAdapter
 import goma.tanulotars.databinding.FragmentFriendsBinding
+import goma.tanulotars.firebase.FirebaseUtility
 import goma.tanulotars.model.CurrentUser
+import goma.tanulotars.model.Relationship
 import goma.tanulotars.model.User
 
 class FriendsFragment : Fragment(), StudentAdapter.FriendClickListener {
@@ -38,7 +42,52 @@ class FriendsFragment : Fragment(), StudentAdapter.FriendClickListener {
         binding.rvFriends.adapter = adapter
         binding.rvFriends.layoutManager = LinearLayoutManager(view?.context)
 
+        val db = Firebase.firestore
+
+        //Itt minden megnyitáskor frissítem a Curentuser friendid listáját azért, mert lehet hogy közben valaki hozzáadta.
+        //ezt majd úgy kell változtatni, hogy ha valaki addolta őt akkor frissüljön és így nem kell ezt
+        val relationships = db.collection("relationships")
+        relationships.get()
+            .addOnSuccessListener { result ->
+                updateFriendsIDFromDatabase(result)
+                fetchFriends(db)
+            }
+
         return binding.root
+    }
+
+    private fun updateFriendsIDFromDatabase(result: QuerySnapshot) {
+        for (document in result) {
+            val relationship = document.toObject<Relationship>()
+            val id1 = relationship.userIdOne
+            val id2 = relationship.userIdTwo
+
+            if (id1 == CurrentUser.user.id && !CurrentUser.user.friendsId.contains(id2)){
+                CurrentUser.user.friendsId += id2
+                FirebaseUtility.updateOrCreateUser(CurrentUser.user)
+            }
+
+
+            if (id2 == CurrentUser.user.id && !CurrentUser.user.friendsId.contains(id1)){
+                CurrentUser.user.friendsId += id1
+                FirebaseUtility.updateOrCreateUser(CurrentUser.user)
+            }
+        }
+    }
+
+    private fun fetchFriends(db: FirebaseFirestore) {
+        for (friendId in CurrentUser.user.friendsId) {
+            val docrefFriend = db.collection("users").document(friendId)
+
+            docrefFriend.get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+
+                        val user = document.toObject<User>()!!
+                        adapter.addStudent(user)
+                    }
+                }
+        }
     }
 
     override fun onFriendClicked(friend: User) {

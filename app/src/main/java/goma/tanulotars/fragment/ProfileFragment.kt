@@ -23,6 +23,7 @@ import goma.tanulotars.databinding.FragmentProfileBinding
 import goma.tanulotars.firebase.FirebaseUtility
 import goma.tanulotars.model.CurrentUser
 import goma.tanulotars.model.Post
+import goma.tanulotars.model.Relationship
 import goma.tanulotars.model.User
 
 
@@ -37,6 +38,7 @@ class ProfileFragment() : Fragment(), PostsAdapter.PostClickListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         val gson = Gson()
         val userJson = requireArguments().getString("userJson")
         user = gson.fromJson(userJson, user::class.java)
@@ -137,8 +139,12 @@ class ProfileFragment() : Fragment(), PostsAdapter.PostClickListener {
         }
 
         binding.btnSendMessage.setOnClickListener {
-            CurrentUser.user.friends += user
-            user.friends += CurrentUser.user
+            db.collection("relationships").add(Relationship(CurrentUser.user.id, user.id))
+
+            CurrentUser.user.friendsId += user.id
+            user.friendsId += CurrentUser.user.id
+
+
             FirebaseUtility.updateOrCreateUser(CurrentUser.user)
             FirebaseUtility.updateOrCreateUser(user)
             Toast.makeText(
