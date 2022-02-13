@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Tanulotars"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.ForgottenPassword"
+            android:exported="false" />
+        <activity
             android:name=".activity.HelpActivity"
             android:exported="false" />
         <activity
@@ -47,7 +50,8 @@
             android:theme="@style/Theme.Tanulotars.NoActionBar" />
         <activity
             android:name=".activity.LoginActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="locked">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

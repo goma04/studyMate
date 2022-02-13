@@ -25,6 +25,7 @@ import goma.tanulotars.model.CurrentUser
 import goma.tanulotars.model.Post
 import goma.tanulotars.model.Relationship
 import goma.tanulotars.model.User
+import java.util.*
 
 
 class ProfileFragment() : Fragment(), PostsAdapter.PostClickListener {
@@ -53,6 +54,18 @@ class ProfileFragment() : Fragment(), PostsAdapter.PostClickListener {
         binding.rvPosts.layoutManager = LinearLayoutManager(view?.context).apply {
             reverseLayout = true
             stackFromEnd = true
+        }
+
+        binding.btnReport.setOnClickListener {
+            db.collection("reports")
+                .document(user.name + user.id)
+                .set(HashMap<String, Objects>())
+
+            Toast.makeText(
+                requireContext(),
+                "${user.name} jelentve!",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
 
@@ -122,6 +135,7 @@ class ProfileFragment() : Fragment(), PostsAdapter.PostClickListener {
 
     private fun setCurrentUserProfile() {
         binding.btnSendMessage.text = "Profil szerkesztése"
+        binding.btnReport.visibility = View.GONE
         binding.btnSendMessage.setOnClickListener {
             startActivity(Intent(requireContext(), EditProfileActivity::class.java))
         }

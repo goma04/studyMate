@@ -111,8 +111,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
 
             R.id.nav_home -> {
-                binding.tvFragmentTitle.text = "Posztok"
-                changeFragment(postsFragment)
+                binding.tvFragmentTitle.text = "Home"
+                changeFragment(PostsFragment())
             }
             R.id.nav_friends -> {
                 binding.tvFragmentTitle.text = "Tanulótársak"

@@ -24,6 +24,8 @@
                 android:paddingLeft="24dp"
                 android:paddingRight="24dp"
                 android:layout_marginBottom="8dp"
+                app:helperTextTextColor="@color/red"
+                android:id="@+id/emailContainer"
                 android:layout_marginTop="13dp">
 
                 <EditText
@@ -32,6 +34,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Email"
 
+
                     android:inputType="textEmailAddress"
                     />
 
@@ -39,6 +42,8 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
+                android:id="@+id/passwordContainer"
+                app:helperTextTextColor="@color/red"
                 android:layout_height="wrap_content"
                 android:paddingLeft="24dp"
                 android:paddingRight="24dp"

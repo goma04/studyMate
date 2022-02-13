@@ -3,21 +3,21 @@
     android:id="@+id/activity_write_post"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/Tan"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
         android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
         android:text="Új poszt"
 
-        android:layout_marginBottom="20dp"/>
+        android:textSize="30sp" />
 
     <EditText
         android:id="@+id/etTitle"
@@ -29,18 +29,37 @@
     <EditText
         android:id="@+id/etBody"
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
         android:layout_height="170dp"
-        android:layout_gravity="top"
-        android:padding="10dp"
-        android:hint="Írd meg a posztot"
+        android:layout_marginTop="20dp"
         android:background="@drawable/border"
-
         android:ems="100"
-        android:scrollHorizontally="false" />
+        android:gravity="top"
+        android:hint="Írd meg a posztot"
+        android:padding="10dp"
+        android:scrollHorizontally="false"
+        android:singleLine="false" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:text="Tantárgy:"
 
+        android:textSize="20sp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/border"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:paddingVertical="5dp"
+        android:layout_height="wrap_content">
+
+        <Spinner
+            android:id="@+id/spinnerSubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnSend"

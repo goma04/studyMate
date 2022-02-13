@@ -42,6 +42,8 @@ class PostsAdapter(val context: Context, val postClickListener: PostClickListene
         val tmpPost = postList[position]
         holder.post = tmpPost
         holder.binding.tvAuthor.text = tmpPost.author
+        holder.binding.tvDate.text =  tmpPost.date.take(10)
+        holder.binding.tvSubject.text =  tmpPost.subject
         holder.binding.tvTitle.text = tmpPost.title
         holder.binding.tvBody.text = tmpPost.body
 
@@ -60,9 +62,10 @@ class PostsAdapter(val context: Context, val postClickListener: PostClickListene
         post ?: return
 
         postList += (post)
-        submitList((postList))
         postList.sortBy { it.date }
-        notifyDataSetChanged()
+        submitList((postList))
+
+       // notifyDataSetChanged()
     }
 
     fun removePost(post: Post?){
@@ -89,12 +92,21 @@ class PostsAdapter(val context: Context, val postClickListener: PostClickListene
 
 
     fun update(post: Post) {
-
-
         postList[postList.indexOf(postList.find{it.uid.equals(post.uid)})] = post
 
         notifyDataSetChanged()
     }
+
+    fun update(posts: List<Post>) {
+
+        postList.clear()
+        postList.addAll(posts)
+        postList.sortBy { it.date }
+
+        notifyDataSetChanged()
+    }
+
+
 
     fun remove(post: Post){
         postList.remove(post)

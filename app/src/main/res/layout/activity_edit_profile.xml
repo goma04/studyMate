@@ -393,6 +393,8 @@
                 android:layout_margin="28dp"
                 android:background="@color/blue"
                 android:text="@string/btn_start" />
+
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

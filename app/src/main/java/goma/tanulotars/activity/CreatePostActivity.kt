@@ -2,10 +2,15 @@ package goma.tanulotars.activity
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import goma.tanulotars.R
 import goma.tanulotars.databinding.ActivityCreatePostBinding
 import goma.tanulotars.extension.validateNonEmpty
 import goma.tanulotars.model.CurrentUser
@@ -15,7 +20,8 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 
 
-class CreatePostActivity : AppCompatActivity() {
+class CreatePostActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+    private var chosenSubjectName: String = "mindegy"
     private lateinit var binding: ActivityCreatePostBinding
 
     companion object {
@@ -29,6 +35,8 @@ class CreatePostActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnSend.setOnClickListener { sendClick() }
+
+        initSpinner()
 
     }
 
@@ -55,7 +63,8 @@ class CreatePostActivity : AppCompatActivity() {
             binding.etBody.text.toString(),
             CurrentUser.user.profilePictureId,
             CurrentUser.user.id,
-            dateString
+            dateString,
+            chosenSubjectName
         )
 
         val db = Firebase.firestore
@@ -68,6 +77,31 @@ class CreatePostActivity : AppCompatActivity() {
                 Toast.makeText(this, "Sikeres!", Toast.LENGTH_SHORT).show()
                 finish()
             }
+
+    }
+
+    private fun initSpinner() {
+        val spinner: Spinner = binding.spinnerSubject
+
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.spinner_subjects,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinner.adapter = adapter
+        }
+
+        spinner.onItemSelectedListener = this
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>, p1: View?, pos: Int, p3: Long) {
+        chosenSubjectName = parent.getItemAtPosition(pos) as String
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
 
     }
 

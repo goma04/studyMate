@@ -4,16 +4,20 @@ import android.content.ContentValues
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import goma.tanulotars.ImageIdGetter
 import goma.tanulotars.R
+import goma.tanulotars.adapter.recyclerView.MessageAdapter.Companion.TAG
 import goma.tanulotars.adapter.recyclerView.SubjectAdapter
 import goma.tanulotars.databinding.ActivityRegisterBinding
 import goma.tanulotars.firebase.FirebaseUtility
@@ -22,7 +26,7 @@ import goma.tanulotars.model.Level
 import goma.tanulotars.model.Subject
 
 
-class RegisterActivity : AppCompatActivity(){
+class RegisterActivity : AppCompatActivity(), android.text.TextWatcher {
     private lateinit var binding: ActivityRegisterBinding
     private val subjectAdapter = SubjectAdapter(CurrentUser.user.subjects)
 
@@ -78,9 +82,12 @@ class RegisterActivity : AppCompatActivity(){
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.etEmail.addTextChangedListener(this)
+        binding.etPassword.addTextChangedListener(this)
+
         binding.btnStart.setOnClickListener {
 
-            if(!checkValidForm()){
+            if (!checkValidForm()) {
                 binding.tvExplain.setTextColor(Color.parseColor("#FF0000"))
                 return@setOnClickListener
             }
@@ -94,22 +101,33 @@ class RegisterActivity : AppCompatActivity(){
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(ContentValues.TAG, "createUserWithEmail:success")
-                        val user = auth.currentUser
                         setUserTextData()
                         setUserProfilePicture()
 
                         FirebaseUtility.updateOrCreateUser(CurrentUser.user)
 
-                        showDialog("Sikeres regisztráció!")
-                       // finish()
+                        auth.currentUser?.sendEmailVerification()
+
+                        showDialog("Sikeres regisztráció! Elküldtünk egy emailt a megadott címre.")
+
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w(ContentValues.TAG, "createUserWithEmail:failure", task.exception)
-                        Toast.makeText(
-                            baseContext, "Authentication failed.",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        showDialog("Sikertelen regisztráció")
+
+                        Toast.makeText(this, "Sikertelen regisztráció", Toast.LENGTH_SHORT).show()
+
+                        try {
+                            throw task.exception!!
+                        } catch (e: FirebaseAuthWeakPasswordException) {
+                            binding.passwordContainer.setError(getString(R.string.error_weak_password))
+                            binding.passwordContainer.requestFocus()
+                        }
+                        catch (e: FirebaseAuthUserCollisionException) {
+                            binding.emailContainer.setError(getString(R.string.error_user_exists))
+                            binding.emailContainer.requestFocus()
+                        }catch(e: Exception) {
+                            e.message?.let { it1 -> Log.e(TAG, it1) };
+                        }
                     }
                 }
         }
@@ -149,10 +167,12 @@ class RegisterActivity : AppCompatActivity(){
     }
 
     private fun checkValidForm(): Boolean {
+
+
         if (binding.editTextTextPersonName.text.isEmpty())
             return false
 
-        if(binding.etFacebook.text.isEmpty() && binding.etInstagram.text.isEmpty() && binding.etOther.text.isEmpty())
+        if (binding.etFacebook.text.isEmpty() && binding.etInstagram.text.isEmpty() && binding.etOther.text.isEmpty())
             return false
 
         return true
@@ -248,9 +268,33 @@ class RegisterActivity : AppCompatActivity(){
                 binding.imageButton14
             )
         }
+
+        binding.imageButton15.setOnClickListener {
+            changeSelectedProfilePicture(
+                binding.imageButton15
+            )
+        }
+
+        binding.imageButton16.setOnClickListener {
+            changeSelectedProfilePicture(
+                binding.imageButton16
+            )
+        }
+
+        binding.imageButton17.setOnClickListener {
+            changeSelectedProfilePicture(
+                binding.imageButton17
+            )
+        }
+
+        binding.imageButton18.setOnClickListener {
+            changeSelectedProfilePicture(
+                binding.imageButton18
+            )
+        }
     }
 
-    private fun changeSelectedProfilePicture(newSelected: ImageView){
+    private fun changeSelectedProfilePicture(newSelected: ImageView) {
         currentlySelectedProfilePicture?.setBackgroundResource(0)
         currentlySelectedProfilePicture = newSelected
         newSelected.setBackgroundResource(R.drawable.border)
@@ -264,5 +308,26 @@ class RegisterActivity : AppCompatActivity(){
 
     private fun loadItems() {
         subjectAdapter.update(subjects.filter { it.level == Level.INTERMEDIATE })
+    }
+
+    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+    }
+
+    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+    }
+
+    override fun afterTextChanged(p0: Editable?) {
+        binding.emailContainer.helperText = "Rossz formátum!"
+        binding.passwordContainer.helperText = "A jelszónak legalább 6 karakter hosszúnak kell lennie!"
+
+        if (android.util.Patterns.EMAIL_ADDRESS.matcher(binding.etEmail.text).matches()) {
+            binding.emailContainer.helperText = ""
+        }
+
+        if (binding.etPassword.text.length > 6) {
+            binding.passwordContainer.helperText = ""
+        }
     }
 }

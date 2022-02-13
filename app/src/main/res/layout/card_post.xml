@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_margin="10dp"
+    android:layout_margin="5dp"
     card_view:cardCornerRadius="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/orange3"
-        android:padding="10dp">
+        android:padding="5dp">
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -36,6 +36,7 @@
                     android:id="@+id/ivProfilePicture"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
+                    android:layout_gravity="center"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <LinearLayout
@@ -61,6 +62,24 @@
                         android:gravity="center"
 
                        />
+
+                    <TextView
+                        android:id="@+id/tvDate"
+                        android:textColor="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tvSubject"
+                        android:textColor="@color/black"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+
+                        />
                 </LinearLayout>
 
             </LinearLayout>

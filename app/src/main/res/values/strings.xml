@@ -97,4 +97,9 @@
     <string name="login">Bejelentkezés</string>
     <string name="register">Regisztráció</string>
     <string name="new_friend">Új tanulótársaid vannak!\nMegtalálod őket a \"tanulótársak\" között.</string>
+    <string name="error_weak_password">"Gyenge jelszó! "</string>
+    <string name="error_user_exists">Foglalt email cím!</string>
+    <string name="send_message">Ha valakit felvettél tanulótársnak, akkor az általa megadott elérhetőségek egyikén tudod vele felvenni a kapcsolatot. Az üzenetküldési lehetőség fejlesztés alatt áll.</string>
+    <string name="feedback">Ha bármilyen visszajelzésed, javaslatod van az appal kapcsolatban, akkor a tanulotarsapp@gmail.com címen tudod felvenni a kapcsolatot.</string>
+    <string name="report">Ha jelenteni szeretnél valakit, akkor a profiljának az alján található piros gombbal tudod megtenni.</string>
 </resources>

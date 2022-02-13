@@ -84,6 +84,42 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="@string/find_mate" />
+
+            <TextView
+                style="@style/ViewPagerSmallHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hogyan tudok üzenetet küldeni valakinek?" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/send_message" />
+
+            <TextView
+                style="@style/ViewPagerSmallHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Visszajelzés a fejlesztőnek" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/feedback" />
+
+            <TextView
+                style="@style/ViewPagerSmallHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Profil jelentése" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="@string/report" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

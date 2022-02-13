@@ -17,44 +17,60 @@
         app:srcCompat="@drawable/add" />
 
 
-
     <LinearLayout
-        android:paddingHorizontal="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="8dp">
 
         <LinearLayout
-            android:layout_marginBottom="7dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
             android:gravity="center_horizontal"
             android:orientation="horizontal">
 
             <Button
-                android:background="@color/SlateGray"
                 android:id="@+id/btPeople"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/SlateGray"
                 android:text="Emberek" />
 
             <Button
                 android:id="@+id/btPost"
-                android:background="@color/lightGreen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/lightGreen"
                 android:text="Posztok" />
 
 
         </LinearLayout>
 
-        <Spinner
-            android:visibility="gone"
-            android:id="@+id/spinner"
-            android:layout_margin="20dp"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/border"
+            android:layout_marginVertical="20dp"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tantárgy"
+                android:layout_marginVertical="2dp"
+                android:textSize="14sp"
+                android:layout_gravity="center"
+                android:textColor="@color/gray" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPosts"

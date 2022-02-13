@@ -27,11 +27,11 @@ import goma.tanulotars.activity.ProfileActivity
 import goma.tanulotars.adapter.recyclerView.PostsAdapter
 import goma.tanulotars.adapter.recyclerView.StudentAdapter
 import goma.tanulotars.databinding.FragmentPostsBinding
-import goma.tanulotars.model.CurrentUser
 import goma.tanulotars.model.Post
 import goma.tanulotars.model.User
 
-class PostsFragment : Fragment(), PostsAdapter.PostClickListener, AdapterView.OnItemSelectedListener,
+class PostsFragment : Fragment(), PostsAdapter.PostClickListener,
+    AdapterView.OnItemSelectedListener,
     StudentAdapter.FriendClickListener {
     private lateinit var binding: FragmentPostsBinding
     private lateinit var postsAdapter: PostsAdapter
@@ -39,6 +39,7 @@ class PostsFragment : Fragment(), PostsAdapter.PostClickListener, AdapterView.On
     private val db = Firebase.firestore
 
     private val allStudent = mutableListOf<User>()
+    private val allPosts = mutableListOf<Post>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,7 +48,7 @@ class PostsFragment : Fragment(), PostsAdapter.PostClickListener, AdapterView.On
     ): View {
         binding = FragmentPostsBinding.inflate(layoutInflater, container, false)
         postsAdapter = PostsAdapter(requireContext(), this)
-        studentsAdapter = StudentAdapter(mutableListOf(),requireContext(),this)
+        studentsAdapter = StudentAdapter(mutableListOf(), requireContext(), this)
 
         binding.rvPosts.adapter = postsAdapter
         binding.rvPosts.layoutManager = LinearLayoutManager(view?.context).apply {
@@ -57,15 +58,13 @@ class PostsFragment : Fragment(), PostsAdapter.PostClickListener, AdapterView.On
 
 
         binding.rvPeople.adapter = studentsAdapter
-        binding.rvPeople.layoutManager =  LinearLayoutManager(view?.context)
+        binding.rvPeople.layoutManager = LinearLayoutManager(view?.context)
 
-        studentsAdapter.update(CurrentUser.user.friends)
 
         binding.floatingActionButton.setOnClickListener {
             val createPostIntent = Intent(context, CreatePostActivity::class.java)
             startActivity(createPostIntent)
         }
-
 
         initSpinner()
         initStudentRW()
@@ -105,13 +104,18 @@ class PostsFragment : Fragment(), PostsAdapter.PostClickListener, AdapterView.On
                 for (dc in snapshots!!.documentChanges) {
                     when (dc.type) {
                         DocumentChange.Type.ADDED -> {
+                            allPosts.add(dc.document.toObject())
                             postsAdapter.addPost(dc.document.toObject())
                             binding.rvPosts.scrollToPosition(postsAdapter.itemCount - 1)
                         }
                         DocumentChange.Type.MODIFIED -> {
+                            val updatedPost = dc.document.toObject<Post>()
+                            allPosts[allPosts.indexOf(allPosts.find { it.uid == updatedPost.uid })] =
+                                updatedPost
                             postsAdapter.update(dc.document.toObject<Post>())
                         }
                         DocumentChange.Type.REMOVED -> {
+                            allPosts.remove(dc.document.toObject())
                             postsAdapter.removePost(dc.document.toObject())
                         }
 
@@ -136,7 +140,8 @@ class PostsFragment : Fragment(), PostsAdapter.PostClickListener, AdapterView.On
                         }
                         DocumentChange.Type.MODIFIED -> {
                             val updatedUser = dc.document.toObject<User>()
-                            allStudent[allStudent.indexOf(allStudent.find{it.id == updatedUser.id})] = updatedUser
+                            allStudent[allStudent.indexOf(allStudent.find { it.id == updatedUser.id })] =
+                                updatedUser
                         }
                         DocumentChange.Type.REMOVED -> {
                             allStudent.remove(dc.document.toObject())
@@ -151,6 +156,8 @@ class PostsFragment : Fragment(), PostsAdapter.PostClickListener, AdapterView.On
 
     override fun onResume() {
         super.onResume()
+        studentsAdapter.update(allStudent)
+        postsAdapter.update(allPosts)
         binding.rvPosts.scrollToPosition(postsAdapter.itemCount - 1)
     }
 
@@ -160,10 +167,13 @@ class PostsFragment : Fragment(), PostsAdapter.PostClickListener, AdapterView.On
 
         val name = parent.getItemAtPosition(pos) as String
 
-        if(name == "mindegy")
+        if (name == "mindegy") {
             studentsAdapter.update(allStudent)
-        else
-            studentsAdapter.update(allStudent.filter { it.subjects.any{it.name == name}})
+            postsAdapter.update(allPosts)
+        } else {
+            studentsAdapter.update(allStudent.filter { it.subjects.any { it.name == name } })
+            postsAdapter.update(allPosts.filter { it.subject == name })
+        }
 
     }
 
@@ -175,17 +185,13 @@ class PostsFragment : Fragment(), PostsAdapter.PostClickListener, AdapterView.On
         binding.btPeople.setOnClickListener {
             binding.rvPeople.visibility = View.VISIBLE
             binding.rvPosts.visibility = View.GONE
-            binding.spinner.visibility = View.VISIBLE
             setActiveButton(binding.btPeople, binding.btPost)
-
         }
 
         binding.btPost.setOnClickListener {
             binding.rvPosts.visibility = View.VISIBLE
             binding.rvPeople.visibility = View.GONE
-            binding.spinner.visibility = View.GONE
             setActiveButton(binding.btPost, binding.btPeople)
-
         }
     }
 
@@ -193,7 +199,6 @@ class PostsFragment : Fragment(), PostsAdapter.PostClickListener, AdapterView.On
         btnActive.setBackgroundResource(R.color.lightGreen)
         btnNotActive.setBackgroundResource(R.color.SlateGray)
     }
-
 
 
     @SuppressLint("UseCompatLoadingForDrawables")

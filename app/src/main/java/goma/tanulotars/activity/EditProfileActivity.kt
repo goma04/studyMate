@@ -94,7 +94,9 @@ class EditProfileActivity : AppCompatActivity() {
             CurrentUser.user.instagram = binding.etInstagram.text.toString()
             CurrentUser.user.name = binding.editTextTextPersonName.text.toString()
             CurrentUser.user.otherContact = binding.etOther.text.toString()
-            setUserProfilePicture()
+
+            if (currentlySelectedProfilePicture != null)
+                setUserProfilePicture()
 
             FirebaseUtility.updateOrCreateUser(CurrentUser.user)
             Toast.makeText(
@@ -111,7 +113,7 @@ class EditProfileActivity : AppCompatActivity() {
             finish()
         }
 
-        changeSelectedProfilePicture(binding.imageButton1)
+
 
         initButtons()
         loadSubjects()
@@ -132,8 +134,6 @@ class EditProfileActivity : AppCompatActivity() {
                         .update("author", user.name)
                     db.collection("posts").document(postID)
                         .update("profilePictureId", user.profilePictureId)
-
-
                 }
             }
     }
@@ -248,6 +248,30 @@ class EditProfileActivity : AppCompatActivity() {
         binding.imageButton14.setOnClickListener {
             changeSelectedProfilePicture(
                 binding.imageButton14
+            )
+        }
+
+        binding.imageButton15.setOnClickListener {
+            changeSelectedProfilePicture(
+                binding.imageButton15
+            )
+        }
+
+        binding.imageButton16.setOnClickListener {
+            changeSelectedProfilePicture(
+                binding.imageButton16
+            )
+        }
+
+        binding.imageButton17.setOnClickListener {
+            changeSelectedProfilePicture(
+                binding.imageButton17
+            )
+        }
+
+        binding.imageButton18.setOnClickListener {
+            changeSelectedProfilePicture(
+                binding.imageButton18
             )
         }
     }
