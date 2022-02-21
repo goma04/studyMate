@@ -34,6 +34,7 @@ class ChatActivity : AppCompatActivity() {
         val userJson = intent.extras!!.getString("userJson")
         friend = gson.fromJson(userJson, friend::class.java)
 
+
         binding.tvFriendChatName.text = friend.name
 
         val res = ImageIdGetter.getImageId(this, friend.profilePictureId)
